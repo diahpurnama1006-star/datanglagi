@@ -1,0 +1,136 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<?import javafx.geometry.Insets?>
+<?import javafx.scene.control.Button?>
+<?import javafx.scene.control.Label?>
+<?import javafx.scene.control.TextArea?>
+<?import javafx.scene.layout.FlowPane?>
+<?import javafx.scene.layout.HBox?>
+<?import javafx.scene.layout.VBox?>
+
+<VBox prefHeight="640" prefWidth="360" spacing="8" style="-fx-background-color:#F8F5F2;" xmlns="http://javafx.com/javafx/26" xmlns:fx="http://javafx.com/fxml/1">
+
+    <children>
+
+        <!-- HEADER -->
+        <VBox prefHeight="80" prefWidth="360" spacing="4" style="-fx-background-color:#6E1418;">
+
+            <padding>
+                <Insets left="20" top="20" />
+            </padding>
+
+            <children>
+
+                <Label style="-fx-text-fill:white; -fx-font-size:20; -fx-font-weight:bold;" text="Input Data Harian" />
+
+                <Label style="-fx-text-fill:#F3D5D5; -fx-font-size:12;" text="Senin, 18 Mei 2026" />
+
+            </children>
+
+        </VBox>
+
+        <!-- CONTENT -->
+        <VBox spacing="8">
+
+            <padding>
+                <Insets bottom="10" left="18" right="18" />
+            </padding>
+
+            <children>
+
+                <!-- ALIRAN -->
+                <VBox spacing="10" style="-fx-background-color:white; -fx-background-radius:18; -fx-padding:12;">
+
+                    <children>
+
+                        <Label style="-fx-font-size:14; -fx-font-weight:bold;" text="ALIRAN HAID" />
+
+                        <HBox spacing="6">
+
+                            <children>
+
+                                <Button prefHeight="32" prefWidth="72" style="-fx-background-radius:14; -fx-background-color:#F2EEEE;" text="Tidak Ada" />
+
+                                <Button prefHeight="32" prefWidth="65" style="-fx-background-radius:14; -fx-background-color:#F2EEEE;" text="Ringan" />
+
+                                <Button prefHeight="32" prefWidth="65" style="-fx-background-radius:14; -fx-background-color:white; -fx-border-color:#9B1C1C; -fx-border-radius:14; -fx-text-fill:#9B1C1C;" text="Sedang" />
+
+                                <Button prefHeight="32" prefWidth="65" style="-fx-background-radius:14; -fx-background-color:#F2EEEE;" text="Berat" />
+
+                            </children>
+
+                        </HBox>
+
+                    </children>
+
+                </VBox>
+
+                <!-- GEJALA -->
+                <VBox spacing="10" style="-fx-background-color:white; -fx-background-radius:18; -fx-padding:12;">
+
+                    <children>
+
+                        <Label style="-fx-font-size:14; -fx-font-weight:bold;" text="GEJALA" />
+
+                        <FlowPane hgap="6" vgap="6">
+
+                            <children>
+
+                                <Button prefHeight="30" style="-fx-background-radius:18; -fx-border-radius:18; -fx-border-color:#9B1C1C; -fx-background-color:white; -fx-text-fill:#9B1C1C;" text="Nyeri Perut" />
+
+                                <Button prefHeight="30" style="-fx-background-radius:18; -fx-background-color:#F2EEEE;" text="Sakit Kepala" />
+
+                                <Button prefHeight="30" style="-fx-background-radius:18; -fx-background-color:#F2EEEE;" text="Kembung" />
+
+                                <Button prefHeight="30" style="-fx-background-radius:18; -fx-background-color:#F2EEEE;" text="Mual" />
+
+                                <Button prefHeight="30" style="-fx-background-radius:18; -fx-background-color:#F2EEEE;" text="Payudara Nyeri" />
+
+                                <Button prefHeight="30" style="-fx-background-radius:18; -fx-background-color:#F2EEEE;" text="Kram" />
+
+                                <Button prefHeight="30" style="-fx-background-radius:18; -fx-background-color:#F2EEEE;" text="Lemas" />
+
+                            </children>
+
+                        </FlowPane>
+
+                    </children>
+
+                </VBox>
+
+                <!-- CATATAN -->
+                <VBox spacing="10" style="-fx-background-color:white; -fx-background-radius:18; -fx-padding:12;">
+
+                    <children>
+
+                        <Label style="-fx-font-size:14; -fx-font-weight:bold;" text="TAMBAH CATATAN" />
+
+                        <TextArea prefHeight="70" promptText="Tulis catatanmu hari ini..." />
+
+                    </children>
+
+                </VBox>
+
+                <!-- KB -->
+                <HBox spacing="25" style="-fx-background-color:white; -fx-background-radius:18; -fx-padding:12;">
+
+                    <children>
+
+                        <Label style="-fx-font-size:14;" text="Pilih KB Diminum Hari Ini" />
+
+                        <Button prefHeight="30" prefWidth="55" style="-fx-background-color:#9B1C1C; -fx-text-fill:white; -fx-background-radius:18;" text="ON" />
+
+                    </children>
+
+                </HBox>
+
+                <!-- BUTTON -->
+                <Button prefHeight="42" prefWidth="320" style="-fx-background-color:#9B1C1C; -fx-text-fill:white; -fx-font-size:14; -fx-font-weight:bold; -fx-background-radius:18;" text="Simpan Data Hari Ini" />
+
+            </children>
+
+        </VBox>
+
+    </children>
+
+</VBox>

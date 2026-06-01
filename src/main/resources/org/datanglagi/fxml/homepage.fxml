@@ -1,0 +1,394 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<?import com.gluonhq.charm.glisten.mvc.View?>
+<?import javafx.geometry.Insets?>
+<?import javafx.scene.control.Label?>
+<?import javafx.scene.image.Image?>
+<?import javafx.scene.image.ImageView?>
+<?import javafx.scene.layout.BorderPane?>
+<?import javafx.scene.layout.HBox?>
+<?import javafx.scene.layout.VBox?>
+<?import javafx.scene.text.Font?>
+
+<View maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="640.0" prefWidth="360.0" style="-fx-background-color: white;" xmlns="http://javafx.com/javafx/26" xmlns:fx="http://javafx.com/fxml/1">
+   <center>
+      <VBox prefHeight="758.0" prefWidth="426.0" style="-fx-background-color: linear-gradient(to right, #5A0F14, #7A1A1A);" BorderPane.alignment="CENTER">
+         <children>
+            <VBox prefHeight="200.0" prefWidth="100.0" style="-fx-background-color: linear-gradient(to right, #5A0F14, #7A1A1A);">
+               <children>
+                  <HBox>
+                     <children>
+                        <ImageView fitHeight="55.0" fitWidth="47.0" pickOnBounds="true" preserveRatio="true">
+                           <image>
+                              <Image url="@../images/circle-user-regular.png" />
+                           </image>
+                           <HBox.margin>
+                              <Insets right="10.0" />
+                           </HBox.margin>
+                        </ImageView>
+                        <VBox>
+                           <children>
+                              <Label alignment="TOP_RIGHT" contentDisplay="TOP" text="Halo Diah" textFill="WHITE">
+                                 <font>
+                                    <Font name="Poppins SemiBold" size="20.0" />
+                                 </font>
+                              </Label>
+                              <Label alignment="TOP_RIGHT" contentDisplay="TOP" text="Selasa, 26 Mei 2026" textFill="WHITE">
+                                 <font>
+                                    <Font name="Poppins Medium" size="12.0" />
+                                 </font>
+                              </Label>
+                           </children>
+                        </VBox>
+                        <HBox alignment="TOP_RIGHT" HBox.hgrow="ALWAYS">
+                           <children>
+                              <ImageView fitHeight="36.0" fitWidth="31.0" pickOnBounds="true" preserveRatio="true">
+                                 <image>
+                                    <Image url="@../images/bell-regular.png" />
+                                 </image>
+                              </ImageView>
+                           </children>
+                        </HBox>
+                     </children>
+                  </HBox>
+               </children>
+               <VBox.margin>
+                  <Insets left="10.0" right="10.0" />
+               </VBox.margin>
+               <padding>
+                  <Insets top="30.0" />
+               </padding>
+            </VBox>
+            <VBox prefHeight="639.0" prefWidth="421.0" style="-fx-background-color: white; -fx-background-radius: 10;" VBox.vgrow="ALWAYS">
+               <children>
+                  <VBox prefHeight="132.0" prefWidth="305.0" style="-fx-border-color: rgba(0, 0, 0, 0.1); -fx-border-radius: 10; -fx-background-color: #F7F4F0;">
+                     <VBox.margin>
+                        <Insets left="10.0" right="10.0" top="10.0" />
+                     </VBox.margin>
+                     <children>
+                        <HBox alignment="CENTER" prefHeight="112.0" prefWidth="330.0" spacing="10.0" VBox.vgrow="ALWAYS">
+                           <children>
+                              <VBox>
+                                 <children>
+                                    <ImageView fitHeight="107.0" fitWidth="100.0" pickOnBounds="true" preserveRatio="true">
+                                       <image>
+                                          <Image url="@../images/moon.png" />
+                                       </image>
+                                    </ImageView>
+                                 </children>
+                              </VBox>
+                              <VBox>
+                                 <children>
+                                    <Label alignment="TOP_RIGHT" contentDisplay="TOP" text="Prediksi haid berikutnya">
+                                       <font>
+                                          <Font name="Poppins Medium" size="13.0" />
+                                       </font>
+                                       <VBox.margin>
+                                          <Insets top="10.0" />
+                                       </VBox.margin>
+                                    </Label>
+                                    <Label alignment="TOP_RIGHT" contentDisplay="TOP" text="8">
+                                       <font>
+                                          <Font name="Poppins SemiBold" size="35.0" />
+                                       </font>
+                                    </Label>
+                                    <Label alignment="TOP_RIGHT" contentDisplay="TOP" text="hari lagi">
+                                       <font>
+                                          <Font name="Poppins Medium" size="10.0" />
+                                       </font>
+                                    </Label>
+                                    <Label alignment="TOP_RIGHT" contentDisplay="TOP" text="3 Juni 2026">
+                                       <font>
+                                          <Font name="Poppins Medium" size="13.0" />
+                                       </font>
+                                    </Label>
+                                 </children>
+                              </VBox>
+                           </children>
+                        </HBox>
+                     </children>
+                  </VBox>
+                  <Label alignment="TOP_RIGHT" contentDisplay="TOP" text="Perubahan mood hari ini">
+                     <font>
+                        <Font name="Poppins Medium" size="13.0" />
+                     </font>
+                     <VBox.margin>
+                        <Insets left="10.0" right="10.0" top="10.0" />
+                     </VBox.margin>
+                  </Label>
+                  <HBox alignment="TOP_CENTER" spacing="20.0">
+                     <children>
+                        <VBox alignment="CENTER" HBox.hgrow="ALWAYS">
+                           <children>
+                              <ImageView fitHeight="55.0" fitWidth="47.0" pickOnBounds="true" preserveRatio="true">
+                                 <image>
+                                    <Image url="@../images/face-angry-regular.png" />
+                                 </image>
+                              </ImageView>
+                              <Label alignment="TOP_RIGHT" contentDisplay="TOP" text="marah">
+                                 <font>
+                                    <Font name="Poppins Medium" size="12.0" />
+                                 </font>
+                              </Label>
+                           </children>
+                        </VBox>
+                        <VBox alignment="CENTER" HBox.hgrow="ALWAYS">
+                           <children>
+                              <ImageView fitHeight="55.0" fitWidth="47.0" pickOnBounds="true" preserveRatio="true" VBox.vgrow="ALWAYS">
+                                 <image>
+                                    <Image url="@../images/face-frown-regular.png" />
+                                 </image>
+                              </ImageView>
+                              <Label alignment="TOP_RIGHT" contentDisplay="TOP" text="sedih">
+                                 <font>
+                                    <Font name="Poppins Medium" size="12.0" />
+                                 </font>
+                              </Label>
+                           </children>
+                        </VBox>
+                        <VBox alignment="CENTER" HBox.hgrow="ALWAYS">
+                           <children>
+                              <ImageView fitHeight="55.0" fitWidth="47.0" pickOnBounds="true" preserveRatio="true">
+                                 <image>
+                                    <Image url="@../images/face-meh-regular.png" />
+                                 </image>
+                              </ImageView>
+                              <Label alignment="TOP_RIGHT" contentDisplay="TOP" text="biasa">
+                                 <font>
+                                    <Font name="Poppins Medium" size="12.0" />
+                                 </font>
+                              </Label>
+                           </children>
+                        </VBox>
+                        <VBox alignment="CENTER" HBox.hgrow="ALWAYS">
+                           <children>
+                              <ImageView fitHeight="55.0" fitWidth="47.0" pickOnBounds="true" preserveRatio="true" VBox.vgrow="ALWAYS">
+                                 <image>
+                                    <Image url="@../images/face-grin-beam-regular.png" />
+                                 </image>
+                              </ImageView>
+                              <Label alignment="TOP_RIGHT" contentDisplay="TOP" text="senang">
+                                 <font>
+                                    <Font name="Poppins Medium" size="12.0" />
+                                 </font>
+                              </Label>
+                           </children>
+                        </VBox>
+                     </children>
+                     <VBox.margin>
+                        <Insets left="10.0" right="10.0" top="10.0" />
+                     </VBox.margin>
+                  </HBox>
+                  <HBox alignment="CENTER" spacing="10.0" style="-fx-background-color: #FDE8EA; -fx-background-radius: 10;">
+                     <children>
+                        <VBox style="-fx-background-color: #FDE8EA; -fx-background-radius: 10;" HBox.hgrow="ALWAYS">
+                           <children>
+                              <Label alignment="TOP_RIGHT" contentDisplay="TOP" text="Hubungkan Pasangan">
+                                 <font>
+                                    <Font name="Poppins SemiBold" size="13.0" />
+                                 </font>
+                                 <VBox.margin>
+                                    <Insets top="10.0" />
+                                 </VBox.margin>
+                              </Label>
+                              <Label alignment="TOP_RIGHT" contentDisplay="TOP" text="Beri tahu pasanganmu tentang keadaanmu">
+                                 <font>
+                                    <Font name="Poppins Medium" size="10.0" />
+                                 </font>
+                              </Label>
+                           </children>
+                           <HBox.margin>
+                              <Insets bottom="10.0" left="10.0" />
+                           </HBox.margin>
+                        </VBox>
+                        <VBox alignment="CENTER" prefHeight="104.0" prefWidth="93.0" style="-fx-pref-height: 20; -fx-background-radius: 10;" HBox.hgrow="ALWAYS">
+                           <HBox.margin>
+                              <Insets />
+                           </HBox.margin>
+                           <children>
+                              <Label alignment="TOP_CENTER" contentDisplay="TOP" style="-fx-background-color: #8F0B13; -fx-background-radius: 10;" text="Tambah " textFill="WHITE">
+                                 <font>
+                                    <Font name="Poppins Medium" size="13.0" />
+                                 </font>
+                                 <padding>
+                                    <Insets bottom="5.0" left="5.0" right="5.0" top="5.0" />
+                                 </padding>
+                              </Label>
+                           </children>
+                        </VBox>
+                     </children>
+                     <VBox.margin>
+                        <Insets bottom="10.0" left="10.0" right="10.0" top="10.0" />
+                     </VBox.margin>
+                  </HBox>
+                  <HBox alignment="CENTER" layoutX="20.0" layoutY="268.0" spacing="10.0" style="-fx-background-color: # F7F4F0; -fx-background-radius: 10;">
+                     <children>
+                        <VBox style="-fx-background-radius: 10;" HBox.hgrow="ALWAYS">
+                           <children>
+                              <Label alignment="TOP_RIGHT" contentDisplay="TOP" text="Ringkasan Siklus">
+                                 <font>
+                                    <Font name="Poppins SemiBold" size="15.0" />
+                                 </font>
+                                 <VBox.margin>
+                                    <Insets top="10.0" />
+                                 </VBox.margin>
+                              </Label>
+                              <Label alignment="TOP_RIGHT" contentDisplay="TOP" text="Panjang SIklus ">
+                                 <font>
+                                    <Font name="Poppins Medium" size="12.0" />
+                                 </font>
+                                 <VBox.margin>
+                                    <Insets bottom="5.0" top="5.0" />
+                                 </VBox.margin>
+                              </Label>
+                              <Label alignment="TOP_RIGHT" contentDisplay="TOP" layoutX="10.0" layoutY="40.0" text="Durasi Haid">
+                                 <font>
+                                    <Font name="Poppins Medium" size="12.0" />
+                                 </font>
+                                 <VBox.margin>
+                                    <Insets bottom="5.0" />
+                                 </VBox.margin>
+                              </Label>
+                              <Label alignment="TOP_RIGHT" contentDisplay="TOP" layoutX="10.0" layoutY="55.0" text="Hari Ovulasi">
+                                 <font>
+                                    <Font name="Poppins Medium" size="12.0" />
+                                 </font>
+                                 <VBox.margin>
+                                    <Insets bottom="5.0" />
+                                 </VBox.margin>
+                              </Label>
+                              <Label alignment="TOP_RIGHT" contentDisplay="TOP" layoutX="10.0" layoutY="70.0" text="Siklus Dicatat">
+                                 <font>
+                                    <Font name="Poppins Medium" size="12.0" />
+                                 </font>
+                                 <VBox.margin>
+                                    <Insets bottom="5.0" />
+                                 </VBox.margin>
+                              </Label>
+                           </children>
+                           <HBox.margin>
+                              <Insets bottom="10.0" left="10.0" />
+                           </HBox.margin>
+                        </VBox>
+                        <VBox alignment="CENTER" layoutX="20.0" layoutY="10.0" style="-fx-background-radius: 10;" HBox.hgrow="ALWAYS">
+                           <children>
+                              <Label alignment="TOP_RIGHT" contentDisplay="TOP" text="28">
+                                 <font>
+                                    <Font name="Poppins Medium" size="12.0" />
+                                 </font>
+                                 <VBox.margin>
+                                    <Insets bottom="5.0" top="5.0" />
+                                 </VBox.margin>
+                              </Label>
+                              <Label alignment="TOP_RIGHT" contentDisplay="TOP" layoutX="10.0" layoutY="40.0" text="5" textAlignment="RIGHT">
+                                 <font>
+                                    <Font name="Poppins Medium" size="12.0" />
+                                 </font>
+                                 <VBox.margin>
+                                    <Insets bottom="5.0" />
+                                 </VBox.margin>
+                              </Label>
+                              <Label alignment="TOP_RIGHT" contentDisplay="TOP" layoutX="10.0" layoutY="55.0" text="14" textAlignment="RIGHT">
+                                 <font>
+                                    <Font name="Poppins Medium" size="12.0" />
+                                 </font>
+                                 <VBox.margin>
+                                    <Insets bottom="5.0" />
+                                 </VBox.margin>
+                              </Label>
+                              <Label alignment="TOP_RIGHT" contentDisplay="TOP" layoutX="10.0" layoutY="70.0" text="3X" textAlignment="RIGHT">
+                                 <font>
+                                    <Font name="Poppins Medium" size="12.0" />
+                                 </font>
+                                 <VBox.margin>
+                                    <Insets bottom="5.0" />
+                                 </VBox.margin>
+                              </Label>
+                           </children>
+                        </VBox>
+                     </children>
+                     <VBox.margin>
+                        <Insets bottom="10.0" left="10.0" right="10.0" />
+                     </VBox.margin>
+                  </HBox>
+                  <HBox alignment="BOTTOM_CENTER" layoutX="20.0" layoutY="196.0" spacing="20.0" style="-fx-border-color: rgba(0, 0, 0, 0.1); -fx-border-radius: 10;">
+                     <children>
+                        <VBox alignment="CENTER" HBox.hgrow="ALWAYS">
+                           <children>
+                              <ImageView fitHeight="55.0" fitWidth="47.0" pickOnBounds="true" preserveRatio="true">
+                                 <image>
+                                    <Image url="@../images/house-solid%20(1).png" />
+                                 </image>
+                              </ImageView>
+                              <Label alignment="TOP_RIGHT" contentDisplay="TOP" text="Beranda" textFill="#942e2e">
+                                 <font>
+                                    <Font name="Poppins Medium" size="12.0" />
+                                 </font>
+                              </Label>
+                           </children>
+                        </VBox>
+                        <VBox alignment="CENTER" HBox.hgrow="ALWAYS">
+                           <children>
+                              <ImageView fitHeight="55.0" fitWidth="47.0" pickOnBounds="true" preserveRatio="true" VBox.vgrow="ALWAYS">
+                                 <image>
+                                    <Image url="@../images/calendar-days-regular.png" />
+                                 </image>
+                              </ImageView>
+                              <Label alignment="TOP_RIGHT" contentDisplay="TOP" text="Kalender">
+                                 <font>
+                                    <Font name="Poppins Medium" size="12.0" />
+                                 </font>
+                              </Label>
+                           </children>
+                        </VBox>
+                        <VBox alignment="CENTER" HBox.hgrow="ALWAYS">
+                           <children>
+                              <ImageView fitHeight="55.0" fitWidth="47.0" pickOnBounds="true" preserveRatio="true">
+                                 <image>
+                                    <Image url="@../images/circle-plus-solid.png" />
+                                 </image>
+                              </ImageView>
+                           </children>
+                        </VBox>
+                        <VBox alignment="CENTER" HBox.hgrow="ALWAYS">
+                           <children>
+                              <ImageView fitHeight="55.0" fitWidth="47.0" pickOnBounds="true" preserveRatio="true" VBox.vgrow="ALWAYS">
+                                 <image>
+                                    <Image url="@../images/stethoscope-solid.png" />
+                                 </image>
+                              </ImageView>
+                              <Label alignment="TOP_RIGHT" contentDisplay="TOP" text="Perawatan">
+                                 <font>
+                                    <Font name="Poppins Medium" size="12.0" />
+                                 </font>
+                              </Label>
+                           </children>
+                        </VBox>
+                        <VBox alignment="CENTER" layoutX="111.0" layoutY="10.0">
+                           <children>
+                              <ImageView fitHeight="55.0" fitWidth="47.0" pickOnBounds="true" preserveRatio="true" VBox.vgrow="ALWAYS">
+                                 <image>
+                                    <Image url="@../images/circle-user-regular.png" />
+                                 </image>
+                              </ImageView>
+                              <Label alignment="TOP_RIGHT" contentDisplay="TOP" text="Akun">
+                                 <font>
+                                    <Font name="Poppins Medium" size="12.0" />
+                                 </font>
+                              </Label>
+                           </children>
+                        </VBox>
+                     </children>
+                     <VBox.margin>
+                        <Insets left="10.0" right="10.0" />
+                     </VBox.margin>
+                  </HBox>
+               </children>
+               <VBox.margin>
+                  <Insets />
+               </VBox.margin>
+            </VBox>
+         </children>
+      </VBox>
+   </center>
+</View>

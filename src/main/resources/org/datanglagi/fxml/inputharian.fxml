@@ -1,0 +1,208 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<?import javafx.geometry.Insets?>
+<?import javafx.scene.control.Button?>
+<?import javafx.scene.control.Label?>
+<?import javafx.scene.control.TextArea?>
+<?import javafx.scene.image.Image?>
+<?import javafx.scene.image.ImageView?>
+<?import javafx.scene.layout.FlowPane?>
+<?import javafx.scene.layout.HBox?>
+<?import javafx.scene.layout.VBox?>
+<?import javafx.scene.text.Font?>
+
+<VBox prefHeight="640" prefWidth="360" spacing="15" style="-fx-background-color:#F8F5F2;" xmlns="http://javafx.com/javafx/26" xmlns:fx="http://javafx.com/fxml/1">
+
+    <children>
+
+        <!-- HEADER -->
+        <VBox prefHeight="100" prefWidth="360" spacing="5" style="-fx-background-color:#6E1418;">
+
+            <padding>
+                <Insets left="20" top="25" />
+            </padding>
+
+            <children>
+
+                <Label style="-fx-text-fill:white; -fx-font-size:24; -fx-font-weight:bold;" text="Input Data Harian" />
+
+                <Label style="-fx-text-fill:#F3D5D5; -fx-font-size:14;" text="Senin, 18 Mei 2026" />
+
+            </children>
+
+        </VBox>
+
+        <!-- CONTENT -->
+        <VBox spacing="15">
+
+            <padding>
+                <Insets bottom="20" left="20" right="20" />
+            </padding>
+
+            <children>
+
+                <!-- ALIRAN -->
+                <VBox spacing="12" style="-fx-background-color:white; -fx-background-radius:18; -fx-padding:18;">
+
+                    <children>
+
+                        <Label style="-fx-font-size:16; -fx-font-weight:bold;" text="ALIRAN HAID" />
+
+                        <HBox spacing="8">
+
+                            <children>
+
+                                <Button prefHeight="35" prefWidth="80" style="-fx-background-radius:14; -fx-background-color:#F2EEEE;" text="Tidak Ada" />
+
+                                <Button prefHeight="35" prefWidth="70" style="-fx-background-radius:14; -fx-background-color:#F2EEEE;" text="Ringan" />
+
+                                <Button prefHeight="35" prefWidth="70" style="-fx-background-radius:14; -fx-background-color:white; -fx-border-color:#9B1C1C; -fx-border-radius:14; -fx-text-fill:#9B1C1C;" text="Sedang" />
+
+                                <Button prefHeight="35" prefWidth="70" style="-fx-background-radius:14; -fx-background-color:#F2EEEE;" text="Berat" />
+
+                            </children>
+
+                        </HBox>
+
+                    </children>
+
+                </VBox>
+
+                <!-- GEJALA -->
+                <VBox spacing="12" style="-fx-background-color:white; -fx-background-radius:18; -fx-padding:18;">
+
+                    <children>
+
+                        <Label style="-fx-font-size:16; -fx-font-weight:bold;" text="GEJALA" />
+
+                        <FlowPane hgap="8" vgap="8">
+
+                            <children>
+
+                                <Button style="-fx-background-radius:18; -fx-border-radius:18; -fx-border-color:#9B1C1C; -fx-background-color:white; -fx-text-fill:#9B1C1C;" text="Nyeri Perut" />
+
+                                <Button style="-fx-background-radius:18; -fx-background-color:#F2EEEE;" text="Sakit Kepala" />
+
+                                <Button style="-fx-background-radius:18; -fx-background-color:#F2EEEE;" text="Kembung" />
+
+                                <Button style="-fx-background-radius:18; -fx-background-color:#F2EEEE;" text="Mual" />
+
+                                <Button style="-fx-background-radius:18; -fx-background-color:#F2EEEE;" text="Payudara Nyeri" />
+
+                                <Button style="-fx-background-radius:18; -fx-background-color:#F2EEEE;" text="Kram" />
+
+                                <Button style="-fx-background-radius:18; -fx-background-color:#F2EEEE;" text="Lemas" />
+
+                            </children>
+
+                        </FlowPane>
+
+                    </children>
+
+                </VBox>
+
+                <!-- CATATAN -->
+                <VBox spacing="12" style="-fx-background-color:white; -fx-background-radius:18; -fx-padding:18;">
+
+                    <children>
+
+                        <Label style="-fx-font-size:16; -fx-font-weight:bold;" text="TAMBAH CATATAN" />
+
+                        <TextArea prefHeight="120" promptText="Tulis catatanmu hari ini..." />
+
+                    </children>
+
+                </VBox>
+
+                <!-- KB -->
+                <HBox spacing="40" style="-fx-background-color:white; -fx-background-radius:18; -fx-padding:18;">
+
+                    <children>
+
+                        <Label style="-fx-font-size:15;" text="Pilih KB Diminum Hari Ini" />
+
+                        <Button prefWidth="60" style="-fx-background-color:#9B1C1C; -fx-text-fill:white; -fx-background-radius:18;" text="ON" />
+
+                    </children>
+
+                </HBox>
+
+                <!-- BUTTON -->
+                <Button prefHeight="50" prefWidth="320" style="-fx-background-color:#9B1C1C; -fx-text-fill:white; -fx-font-size:16; -fx-font-weight:bold; -fx-background-radius:18;" text="Simpan Data Hari Ini" />
+            <HBox alignment="BOTTOM_CENTER" spacing="20.0" style="-fx-border-color: rgba(0, 0, 0, 0.1); -fx-border-radius: 10;">
+               <children>
+                  <VBox alignment="CENTER" HBox.hgrow="ALWAYS">
+                     <children>
+                        <ImageView fitHeight="55.0" fitWidth="47.0" pickOnBounds="true" preserveRatio="true">
+                           <image>
+                              <Image url="@../images/house-solid.png" />
+                           </image>
+                        </ImageView>
+                        <Label alignment="TOP_RIGHT" contentDisplay="TOP" text="Beranda">
+                           <font>
+                              <Font name="Poppins Medium" size="12.0" />
+                           </font>
+                        </Label>
+                     </children>
+                  </VBox>
+                  <VBox alignment="CENTER" HBox.hgrow="ALWAYS">
+                     <children>
+                        <ImageView fitHeight="55.0" fitWidth="47.0" pickOnBounds="true" preserveRatio="true" VBox.vgrow="ALWAYS">
+                           <image>
+                              <Image url="@../images/calendar-days-regular.png" />
+                           </image>
+                        </ImageView>
+                        <Label alignment="TOP_RIGHT" contentDisplay="TOP" text="Kalender">
+                           <font>
+                              <Font name="Poppins Medium" size="12.0" />
+                           </font>
+                        </Label>
+                     </children>
+                  </VBox>
+                  <VBox alignment="CENTER" HBox.hgrow="ALWAYS">
+                     <children>
+                        <ImageView fitHeight="55.0" fitWidth="47.0" pickOnBounds="true" preserveRatio="true">
+                           <image>
+                              <Image url="@../images/circle-plus-solid%20(1).png" />
+                           </image>
+                        </ImageView>
+                     </children>
+                  </VBox>
+                  <VBox alignment="CENTER" HBox.hgrow="ALWAYS">
+                     <children>
+                        <ImageView fitHeight="55.0" fitWidth="47.0" pickOnBounds="true" preserveRatio="true" VBox.vgrow="ALWAYS">
+                           <image>
+                              <Image url="@../images/stethoscope-solid.png" />
+                           </image>
+                        </ImageView>
+                        <Label alignment="TOP_RIGHT" contentDisplay="TOP" text="Perawatan">
+                           <font>
+                              <Font name="Poppins Medium" size="12.0" />
+                           </font>
+                        </Label>
+                     </children>
+                  </VBox>
+                  <VBox alignment="CENTER" layoutX="111.0" layoutY="10.0">
+                     <children>
+                        <ImageView fitHeight="55.0" fitWidth="47.0" pickOnBounds="true" preserveRatio="true" VBox.vgrow="ALWAYS">
+                           <image>
+                              <Image url="@../images/circle-user-regular.png" />
+                           </image>
+                        </ImageView>
+                        <Label alignment="TOP_RIGHT" contentDisplay="TOP" text="Akun">
+                           <font>
+                              <Font name="Poppins Medium" size="12.0" />
+                           </font>
+                        </Label>
+                     </children>
+                  </VBox>
+               </children>
+            </HBox>
+
+            </children>
+
+        </VBox>
+
+    </children>
+
+</VBox>
