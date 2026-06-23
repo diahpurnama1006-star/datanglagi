@@ -14,7 +14,7 @@ public class App extends Application {
     @Override
     public void start(Stage stage) throws IOException {
         // Pastikan nama file "login.fxml" ada di folder resources yang tepat
-        scene = new Scene(loadFXML("login"), 360, 640);
+        scene = new Scene(loadFXML("loading"), 360, 640);
         stage.setScene(scene);
         stage.show();
     }

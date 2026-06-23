@@ -3,21 +3,18 @@
 <?import javafx.geometry.Insets?>
 <?import javafx.scene.control.Button?>
 <?import javafx.scene.control.Label?>
-<?import javafx.scene.image.Image?>
-<?import javafx.scene.image.ImageView?>
-<?import javafx.scene.layout.*?>
-<?import javafx.scene.text.Font?>
+<?import javafx.scene.layout.VBox?>
 
-<VBox prefHeight="640.0" prefWidth="360.0" style="-fx-background-color:#F8F5F2;" xmlns="http://javafx.com/javafx/17" xmlns:fx="http://javafx.com/fxml/1" fx:controller="org.datanglagi.controller.UserController">
+<VBox prefHeight="640.0" prefWidth="360.0" style="-fx-background-color:#F8F5F2;" xmlns="http://javafx.com/javafx/26" xmlns:fx="http://javafx.com/fxml/1" fx:controller="org.datanglagi.controller.UserController">
 
     <VBox alignment="CENTER" prefHeight="170.0" prefWidth="360.0" spacing="8" style="-fx-background-color:#6E1418;">
         <children>
-            <Label style="-fx-text-fill:white; -fx-font-size:24; -fx-font-weight:bold;" text="Diah Purnama" />
-            <Label style="-fx-text-fill:#F3D5D5; -fx-font-size:13;" text="diahpurnama@email.com" />
+            <Label fx:id="labelUsername" style="-fx-text-fill:white; -fx-font-size:24; -fx-font-weight:bold;" text="Username" />
+            <Label style="-fx-text-fill:#F3D5D5; -fx-font-size:13;" text="Selamat Datang" />
         </children>
     </VBox>
 
-    <VBox VBox.vgrow="ALWAYS" spacing="15">
+    <VBox prefHeight="550.0" prefWidth="360.0" spacing="15" VBox.vgrow="ALWAYS">
         <padding><Insets left="18" right="18" top="15" /></padding>
         <children>
             <VBox spacing="10" style="-fx-background-color:white; -fx-background-radius:18; -fx-padding:15;">
@@ -31,36 +28,8 @@
                 <Label style="-fx-font-size:14; -fx-font-weight:bold; -fx-text-fill:#888888;" text="LAINNYA" />
                 <Button maxWidth="Infinity" prefHeight="42" style="-fx-background-color:#F8F5F2; -fx-background-radius:12; -fx-alignment:CENTER-LEFT;" text="Bantuan FAQ" />
                 <Button maxWidth="Infinity" prefHeight="42" style="-fx-background-color:#F8F5F2; -fx-background-radius:12; -fx-alignment:CENTER-LEFT;" text="Tentang DatangLagi" />
-                <Button maxWidth="Infinity" prefHeight="42" style="-fx-background-color:#9B1C1C; -fx-text-fill:white; -fx-background-radius:12;" text="Keluar" />
+                <Button maxWidth="Infinity" onMouseClicked="#handleLogout" prefHeight="42" style="-fx-background-color:#9B1C1C; -fx-text-fill:white; -fx-background-radius:12;" text="Keluar" />
             </VBox>
         </children>
     </VBox>
-
-    <HBox alignment="CENTER" prefHeight="70.0" 
-          style="-fx-background-color: white; -fx-padding: 5; -fx-border-color: #EEE; -fx-border-width: 1 0 0 0;">
-        
-        <VBox alignment="CENTER" onMouseClicked="#keBeranda" style="-fx-cursor: hand;" HBox.hgrow="ALWAYS" maxWidth="Infinity">
-            <ImageView fitHeight="28" fitWidth="28"><image><Image url="@../images/house-solid.png"/></image></ImageView>
-            <Label text="Beranda" style="-fx-font-size: 11px; -fx-text-fill: #555;"/>
-        </VBox>
-        
-        <VBox alignment="CENTER" onMouseClicked="#keKalender" style="-fx-cursor: hand;" HBox.hgrow="ALWAYS" maxWidth="Infinity">
-            <ImageView fitHeight="28" fitWidth="28"><image><Image url="@../images/calendar-days-regular.png"/></image></ImageView>
-            <Label text="Kalender" style="-fx-font-size: 11px; -fx-text-fill: #555;"/>
-        </VBox>
-        
-        <VBox alignment="CENTER" style="-fx-cursor: hand;" HBox.hgrow="ALWAYS" maxWidth="Infinity">
-            <ImageView fitHeight="45" fitWidth="45"><image><Image url="@../images/circle-plus-solid.png"/></image></ImageView>
-        </VBox>
-        
-        <VBox alignment="CENTER" onMouseClicked="#kePerawatan" style="-fx-cursor: hand;" HBox.hgrow="ALWAYS" maxWidth="Infinity">
-            <ImageView fitHeight="28" fitWidth="28"><image><Image url="@../images/stethoscope-solid.png"/></image></ImageView>
-            <Label text="Perawatan" style="-fx-font-size: 11px; -fx-text-fill: #555;"/>
-        </VBox>
-        
-        <VBox alignment="CENTER" onMouseClicked="#keAkun" style="-fx-cursor: hand;" HBox.hgrow="ALWAYS" maxWidth="Infinity">
-            <ImageView fitHeight="28" fitWidth="28"><image><Image url="@../images/circle-user-solid.png"/></image></ImageView>
-            <Label text="Akun" style="-fx-font-size: 11px; -fx-font-weight: bold; -fx-text-fill: #8B0000;"/>
-        </VBox>
-    </HBox>
 </VBox>

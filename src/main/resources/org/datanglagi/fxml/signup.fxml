@@ -13,18 +13,12 @@
 <?import javafx.scene.layout.VBox?>
 <?import javafx.scene.text.Font?>
 
-<BorderPane fx:controller="org.datanglagi.controller.SignupController" 
-            maxHeight="-Infinity" maxWidth="-Infinity" 
-            minHeight="-Infinity" minWidth="-Infinity" 
-            prefHeight="640.0" prefWidth="360.0" 
-            style="-fx-background-color: white;" 
-            xmlns="http://javafx.com/javafx/26" 
-            xmlns:fx="http://javafx.com/fxml/1">
+<BorderPane maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="640.0" prefWidth="360.0" style="-fx-background-color: w linear-gradient(to right, #5A0F14, #7A1A1A)hite;" xmlns="http://javafx.com/javafx/26" xmlns:fx="http://javafx.com/fxml/1" fx:controller="org.datanglagi.controller.SignupController">
             
    <center>
-      <VBox prefHeight="200.0" prefWidth="100.0" style="-fx-background-color: #942E2E;">
+      <VBox prefHeight="200.0" prefWidth="100.0" style="-fx-background-color: linear-gradient(to right, #5A0F14, #7A1A1A);">
          <children>
-            <VBox alignment="TOP_CENTER" prefHeight="328.0" prefWidth="360.0" style="-fx-background-color: linear-gradient(to right, #5A0F14, #7A1A1A);">
+            <VBox alignment="TOP_CENTER" prefHeight="184.0" prefWidth="360.0" style="-fx-background-color: linear-gradient(to right, #5A0F14, #7A1A1A);">
                <children>
                   <ImageView fitHeight="121.0" fitWidth="122.0" nodeOrientation="RIGHT_TO_LEFT" pickOnBounds="true" preserveRatio="true">
                      <image>
@@ -41,14 +35,23 @@
                   </Label>
                </children>
             </VBox>
-            <VBox alignment="TOP_CENTER" prefHeight="564.0" prefWidth="360.0" style="-fx-background-radius: 10; -fx-background-color: white;" VBox.vgrow="ALWAYS">
+            <VBox alignment="TOP_CENTER" prefHeight="451.0" prefWidth="360.0" style="-fx-background-radius: 10; -fx-background-color: white;" VBox.vgrow="ALWAYS">
                <children>
                   <VBox>
                      <children>
                         <VBox spacing="5.0">
                            <children>
-                              <Label text="Email"><font><Font name="Poppins Medium" size="12.0" /></font><padding><Insets top="30.0" /></padding></Label>
-                              <TextField fx:id="txtEmail" promptText="nama@email" />
+                              <Label text="Username">
+                                 <font>
+                                    <Font name="Poppins Medium" size="12.0" />
+                                 </font>
+                                 <padding>
+                                    <Insets top="30.0" />
+                                 </padding>
+                              </Label>
+                              <TextField fx:id="txtusername" layoutX="10.0" layoutY="96.0" promptText="masukkan username" />
+                              <Label text="Email"><font><Font name="Poppins Medium" size="12.0" /></font><padding><Insets top="10.0" /></padding></Label>
+                              <TextField fx:id="txtEmail" promptText="masukan email" />
                            </children>
                         </VBox>
                         <VBox spacing="5.0">
@@ -71,7 +74,7 @@
                         </VBox>
                      </children>
                   </VBox>
-                  <Button onAction="#handleDaftar" alignment="TOP_CENTER" mnemonicParsing="false" prefHeight="35.0" prefWidth="222.0" style="-fx-background-color: #942E2E; -fx-background-radius: 10;" text="Daftar Sekarang" textFill="WHITE">
+                  <Button alignment="TOP_CENTER" mnemonicParsing="false" onAction="#handleDaftar" prefHeight="35.0" prefWidth="222.0" style="-fx-background-color: #942E2E; -fx-background-radius: 10;" text="Daftar Sekarang" textFill="WHITE">
                      <font>
                         <Font name="Poppins SemiBold" size="15.0" />
                      </font>

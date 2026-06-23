@@ -1,56 +1,62 @@
 package org.datanglagi.controller;
 
 import javafx.fxml.FXML;
+import javafx.scene.control.Alert;
 import javafx.scene.control.PasswordField;
 import javafx.scene.control.TextField;
-import javafx.scene.control.Alert;
-import javafx.scene.control.Alert.AlertType;
 import java.io.IOException;
+import java.sql.Connection;
+import java.sql.PreparedStatement;
+import java.sql.ResultSet;
+import java.sql.SQLException;
 import org.datanglagi.App;
+import org.datanglagi.UserSession;
+import config.DatabaseHalper;
 
 public class LoginController {
 
-    @FXML private TextField txtEmail;
+    @FXML private TextField txtUsername;
     @FXML private PasswordField txtPassword;
-
-    // Variabel "Memori" sederhana
-    private static String savedEmail = "";
-    private static String savedPass = "";
-    private static boolean akunTerdaftar = false;
-
-    // Fungsi untuk dipanggil oleh SignupController agar bisa menyimpan data
-    public static void simpanAkun(String email, String pass) {
-        savedEmail = email;
-        savedPass = pass;
-        akunTerdaftar = true;
-    }
 
     @FXML
     public void handleLogin() {
-        String email = txtEmail.getText().trim();
-        String pass = txtPassword.getText().trim();
+        String username = txtUsername.getText().trim();
+        String password = txtPassword.getText().trim();
 
-        // 1. Cek jika kolom kosong
-        if (email.isEmpty() || pass.isEmpty()) {
-            tampilkanPesan(AlertType.WARNING, "Peringatan", "Email dan Kata Sandi tidak boleh kosong!");
+        if (username.isEmpty() || password.isEmpty()) {
+            tampilkanPesan("Username dan Password tidak boleh kosong, wak!");
             return;
         }
 
-        // 2. Cek apakah akun sudah pernah didaftar
-        if (!akunTerdaftar) {
-            tampilkanPesan(AlertType.ERROR, "Login Gagal", "Anda belum punya akun. Silakan daftar dulu.");
-            return;
-        }
+        String query = "SELECT id_user, username FROM user WHERE username = ?";
 
-        // 3. Cek apakah email dan password benar
-        if (email.equals(savedEmail) && pass.equals(savedPass)) {
-            try {
-                App.setRoot("homepage");
-            } catch (IOException e) {
-                e.printStackTrace();
+        try (Connection conn = DatabaseHalper.getConnection();
+             PreparedStatement stmt = conn.prepareStatement(query)) {
+            
+            stmt.setString(1, username);
+            
+            try (ResultSet rs = stmt.executeQuery()) {
+                if (rs.next()) {
+                    int idUserLogin = rs.getInt("id_user");
+                    String usernameLogin = rs.getString("username");
+
+                    // Set Sesi Aktif agar halaman utama bisa tahu siapa yang login
+                    UserSession.setSession(idUserLogin, usernameLogin);
+
+                    // Pindah ke halaman navbar utama
+                    try {
+                        App.setRoot("navbar");
+                    } catch (IOException e) {
+                        e.printStackTrace();
+                        tampilkanPesan("Gagal memuat halaman aplikasi.");
+                    }
+                } else {
+                    tampilkanPesan("Username tidak ditemukan. Silakan daftar dulu, wak!");
+                }
             }
-        } else {
-            tampilkanPesan(AlertType.ERROR, "Login Gagal", "Email atau kata sandi salah.");
+        } catch (SQLException e) {
+            e.printStackTrace();
+            tampilkanPesan("Terjadi kesalahan database: " + e.getMessage());
         }
     }
 
@@ -65,14 +71,14 @@ public class LoginController {
 
     @FXML
     public void handleLupaPassword() {
-        tampilkanPesan(AlertType.INFORMATION, "Info", "Fitur ini sedang dalam pengembangan.");
+        tampilkanPesan("Fitur lupa password sedang dalam pengembangan.");
     }
 
-    private void tampilkanPesan(AlertType tipe, String judul, String konten) {
-        Alert alert = new Alert(tipe);
-        alert.setTitle(judul);
-        alert.setHeaderText(null);
-        alert.setContentText(konten);
-        alert.showAndWait();
+    private void tampilkanPesan(String pesan) {
+        Alert a = new Alert(Alert.AlertType.INFORMATION);
+        a.setTitle("Informasi");
+        a.setHeaderText(null);
+        a.setContentText(pesan);
+        a.showAndWait();
     }
 }

@@ -1,0 +1,76 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<?import javafx.scene.control.Label?>
+<?import javafx.scene.image.Image?>
+<?import javafx.scene.image.ImageView?>
+<?import javafx.scene.layout.BorderPane?>
+<?import javafx.scene.layout.HBox?>
+<?import javafx.scene.layout.StackPane?>
+<?import javafx.scene.layout.VBox?>
+
+<BorderPane prefHeight="640.0" prefWidth="360.0" xmlns="http://javafx.com/javafx/26" xmlns:fx="http://javafx.com/fxml/1" fx:controller="org.datanglagi.controller.NavbarController">
+            
+   <center>
+      <StackPane fx:id="contentArea" style="-fx-background-color: #F9F9F9;" />
+   </center>
+
+   <bottom>
+      <HBox alignment="CENTER" prefHeight="70.0" prefWidth="360.0" style="-fx-background-color: white; -fx-padding: 5; -fx-border-color: #EEE; -fx-border-width: 1 0 0 0;" BorderPane.alignment="CENTER">
+         <children>
+            <VBox alignment="CENTER" maxWidth="Infinity" onMouseClicked="#keBeranda" style="-fx-cursor: hand;" HBox.hgrow="ALWAYS">
+               <children>
+                  <ImageView fitHeight="28" fitWidth="28">
+                     <image>
+                        <Image url="@../images/house-solid.png" />
+                     </image>
+                  </ImageView>
+                  <Label style="-fx-font-size: 11px; -fx-text-fill: #555;" text="Beranda" />
+               </children>
+            </VBox>
+            
+            <VBox alignment="CENTER" maxWidth="Infinity" onMouseClicked="#keKalender" style="-fx-cursor: hand;" HBox.hgrow="ALWAYS">
+               <children>
+                  <ImageView fitHeight="28" fitWidth="28">
+                     <image>
+                        <Image url="@../images/calendar-days-regular.png" />
+                     </image>
+                  </ImageView>
+                  <Label style="-fx-font-size: 11px; -fx-text-fill: #555;" text="Kalender" />
+               </children>
+            </VBox>
+            
+            <VBox alignment="CENTER" maxWidth="Infinity" onMouseClicked="#keInputHarian" style="-fx-cursor: hand;" HBox.hgrow="ALWAYS">
+               <children>
+                  <ImageView fitHeight="45" fitWidth="45">
+                     <image>
+                        <Image url="@../images/circle-plus-solid.png" />
+                     </image>
+                  </ImageView>
+               </children>
+            </VBox>
+            
+            <VBox alignment="CENTER" maxWidth="Infinity" onMouseClicked="#kePerawatan" style="-fx-cursor: hand;" HBox.hgrow="ALWAYS">
+               <children>
+                  <ImageView fitHeight="28" fitWidth="28">
+                     <image>
+                        <Image url="@../images/stethoscope-solid.png" />
+                     </image>
+                  </ImageView>
+                  <Label style="-fx-font-size: 11px; -fx-font-weight: bold; -fx-text-fill: #8B0000;" text="Perawatan" />
+               </children>
+            </VBox>
+            
+            <VBox alignment="CENTER" maxWidth="Infinity" onMouseClicked="#keAkun" style="-fx-cursor: hand;" HBox.hgrow="ALWAYS">
+               <children>
+                  <ImageView fitHeight="28" fitWidth="28">
+                     <image>
+                        <Image url="@../images/circle-user-solid.png" />
+                     </image>
+                  </ImageView>
+                  <Label style="-fx-font-size: 11px; -fx-text-fill: #555;" text="Akun" />
+               </children>
+            </VBox>
+         </children>
+      </HBox>
+   </bottom>
+</BorderPane>

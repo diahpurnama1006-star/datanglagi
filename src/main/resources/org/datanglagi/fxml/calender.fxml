@@ -3,72 +3,120 @@
 <?import javafx.geometry.Insets?>
 <?import javafx.scene.control.Button?>
 <?import javafx.scene.control.Label?>
-<?import javafx.scene.control.TextArea?>
-<?import javafx.scene.layout.FlowPane?>
+<?import javafx.scene.layout.ColumnConstraints?>
+<?import javafx.scene.layout.GridPane?>
 <?import javafx.scene.layout.HBox?>
+<?import javafx.scene.layout.RowConstraints?>
 <?import javafx.scene.layout.VBox?>
 
-<VBox prefHeight="640" prefWidth="360" spacing="8" style="-fx-background-color:#F8F5F2;" xmlns="http://javafx.com/javafx/17" xmlns:fx="http://javafx.com/fxml/1" fx:controller="org.datanglagi.controller.CalenderController">
+<VBox prefHeight="640.0"
+      prefWidth="360.0"
+      spacing="15"
+      style="-fx-background-color:#F8F5F2;"
+      xmlns="http://javafx.com/javafx/26"
+      xmlns:fx="http://javafx.com/fxml/1"
+      fx:controller="org.datanglagi.controller.CalenderController">
+
+<VBox prefHeight="90"
+      spacing="2"
+      style="-fx-background-color:#6E1418;">
+
+    <padding>
+        <Insets left="20" top="20"/>
+    </padding>
 
     <children>
-        <VBox prefHeight="80" prefWidth="360" spacing="4" style="-fx-background-color:#6E1418;">
-            <padding><Insets left="20" top="20" /></padding>
-            <children>
-                <Label style="-fx-text-fill:white; -fx-font-size:20; -fx-font-weight:bold;" text="Input Data Harian" />
-                <Label style="-fx-text-fill:#F3D5D5; -fx-font-size:12;" text="Senin, 18 Mei 2026" />
-            </children>
-        </VBox>
 
-        <VBox spacing="8">
-            <padding><Insets bottom="10" left="18" right="18" /></padding>
-            <children>
-                <VBox spacing="10" style="-fx-background-color:white; -fx-background-radius:18; -fx-padding:12;">
-                    <children>
-                        <Label style="-fx-font-size:14; -fx-font-weight:bold;" text="ALIRAN HAID" />
-                        <HBox spacing="6">
-                            <children>
-                                <Button fx:id="btnTidakAda" onAction="#pilihAliran" prefHeight="32" prefWidth="72" style="-fx-background-radius:14; -fx-background-color:#F2EEEE;" text="Tidak Ada" />
-                                <Button fx:id="btnRingan" onAction="#pilihAliran" prefHeight="32" prefWidth="65" style="-fx-background-radius:14; -fx-background-color:#F2EEEE;" text="Ringan" />
-                                <Button fx:id="btnSedang" onAction="#pilihAliran" prefHeight="32" prefWidth="65" style="-fx-background-radius:14; -fx-background-color:#F2EEEE;" text="Sedang" />
-                                <Button fx:id="btnBerat" onAction="#pilihAliran" prefHeight="32" prefWidth="65" style="-fx-background-radius:14; -fx-background-color:#F2EEEE;" text="Berat" />
-                            </children>
-                        </HBox>
-                    </children>
-                </VBox>
+        <Label text="Kalender DatangLagi"
+               style="-fx-text-fill:white;
+                      -fx-font-size:24;
+                      -fx-font-weight:bold;"/>
 
-                <VBox spacing="10" style="-fx-background-color:white; -fx-background-radius:18; -fx-padding:12;">
-                    <children>
-                        <Label style="-fx-font-size:14; -fx-font-weight:bold;" text="GEJALA" />
-                        <FlowPane hgap="6" vgap="6">
-                            <children>
-                                <Button fx:id="btnNyeri" onAction="#pilihGejala" prefHeight="30" style="-fx-background-radius:18; -fx-background-color:#F2EEEE;" text="Nyeri Perut" />
-                                <Button fx:id="btnSakitKepala" onAction="#pilihGejala" prefHeight="30" style="-fx-background-radius:18; -fx-background-color:#F2EEEE;" text="Sakit Kepala" />
-                                <Button fx:id="btnKembung" onAction="#pilihGejala" prefHeight="30" style="-fx-background-radius:18; -fx-background-color:#F2EEEE;" text="Kembung" />
-                                <Button fx:id="btnMual" onAction="#pilihGejala" prefHeight="30" style="-fx-background-radius:18; -fx-background-color:#F2EEEE;" text="Mual" />
-                                <Button fx:id="btnPayudara" onAction="#pilihGejala" prefHeight="30" style="-fx-background-radius:18; -fx-background-color:#F2EEEE;" text="Payudara Nyeri" />
-                                <Button fx:id="btnKram" onAction="#pilihGejala" prefHeight="30" style="-fx-background-radius:18; -fx-background-color:#F2EEEE;" text="Kram" />
-                                <Button fx:id="btnLemas" onAction="#pilihGejala" prefHeight="30" style="-fx-background-radius:18; -fx-background-color:#F2EEEE;" text="Lemas" />
-                            </children>
-                        </FlowPane>
-                    </children>
-                </VBox>
+        <Label text="Lacak siklus dan catatan harian"
+               style="-fx-text-fill:#E5CACA;
+                      -fx-font-size:12;"/>
 
-                <VBox spacing="10" style="-fx-background-color:white; -fx-background-radius:18; -fx-padding:12;">
-                    <children>
-                        <Label style="-fx-font-size:14; -fx-font-weight:bold;" text="TAMBAH CATATAN" />
-                        <TextArea prefHeight="70" promptText="Tulis catatanmu hari ini..." />
-                    </children>
-                </VBox>
-
-                <HBox spacing="25" style="-fx-background-color:white; -fx-background-radius:18; -fx-padding:12;">
-                    <children>
-                        <Label style="-fx-font-size:14;" text="Pilih KB Diminum Hari Ini" />
-                        <Button prefHeight="30" prefWidth="55" style="-fx-background-color:#9B1C1C; -fx-text-fill:white; -fx-background-radius:18;" text="ON" />
-                    </children>
-                </HBox>
-
-                <Button onAction="#simpanData" prefHeight="42" prefWidth="320" style="-fx-background-color:#9B1C1C; -fx-text-fill:white; -fx-font-size:14; -fx-font-weight:bold; -fx-background-radius:18;" text="Simpan Data Hari Ini" />
-            </children>
-        </VBox>
     </children>
+
+</VBox>
+
+    <!-- BULAN -->
+<HBox alignment="CENTER" spacing="55">
+
+    <children>
+
+        <Button prefHeight="35"
+                prefWidth="35"
+                text="‹"
+                onAction="#prevMonth"
+                style="-fx-background-radius:20;
+                       -fx-background-color:#F3EEEE;" />
+
+        <Label fx:id="monthLabel"
+               style="-fx-font-size:18;
+                      -fx-font-weight:bold;" />
+
+        <Button prefHeight="35"
+                prefWidth="35"
+                text="›"
+                onAction="#nextMonth"
+                style="-fx-background-radius:20;
+                       -fx-background-color:#F3EEEE;" />
+
+    </children>
+
+</HBox>
+
+<HBox spacing="23">
+
+    <padding>
+        <Insets left="20"/>
+    </padding>
+
+    <children>
+        <Label text="SEN"/>
+        <Label text="SEL"/>
+        <Label text="RAB"/>
+        <Label text="KAM"/>
+        <Label text="JUM"/>
+        <Label text="SAB"/>
+        <Label text="MIN"/>
+    </children>
+
+</HBox>
+
+    <!-- HARI -->
+<GridPane fx:id="calendarGrid"
+          hgap="8"
+          vgap="12"
+          prefWidth="320">
+
+    <padding>
+        <Insets left="20" right="20"/>
+    </padding>
+
+    <columnConstraints>
+        <ColumnConstraints percentWidth="14.28"/>
+        <ColumnConstraints percentWidth="14.28"/>
+        <ColumnConstraints percentWidth="14.28"/>
+        <ColumnConstraints percentWidth="14.28"/>
+        <ColumnConstraints percentWidth="14.28"/>
+        <ColumnConstraints percentWidth="14.28"/>
+        <ColumnConstraints percentWidth="14.28"/>
+    </columnConstraints>
+
+    <rowConstraints>
+        <RowConstraints />
+        <RowConstraints />
+        <RowConstraints />
+        <RowConstraints />
+        <RowConstraints />
+        <RowConstraints />
+    </rowConstraints>
+
+</GridPane>
+
+    <!-- SPACE UNTUK NAVBAR -->
+    <VBox prefHeight="70" />
+
 </VBox>

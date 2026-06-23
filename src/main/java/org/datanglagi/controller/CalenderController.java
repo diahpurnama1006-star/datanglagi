@@ -1,76 +1,106 @@
 package org.datanglagi.controller;
 
-import java.io.IOException;
-import java.net.URL;
-import java.util.ArrayList;
-import java.util.List;
-import java.util.ResourceBundle;
-import javafx.animation.FadeTransition;
-import javafx.event.ActionEvent;
+import java.time.LocalDate;
+import java.time.YearMonth;
+import java.time.format.TextStyle;
+import java.util.Locale;
+
 import javafx.fxml.FXML;
-import javafx.fxml.Initializable;
-import javafx.scene.Node;
 import javafx.scene.control.Button;
-import javafx.scene.input.MouseEvent;
-import javafx.util.Duration;
-import org.datanglagi.App;
+import javafx.scene.control.Label;
+import javafx.scene.layout.GridPane;
 
-public class CalenderController implements Initializable {
+public class CalenderController {
+ 
+@FXML 
+    private Button btn;
 
-    // Deklarasi Komponen (Pastikan fx:id di FXML sama persis)
-    @FXML private Button btnTidakAda, btnRingan, btnSedang, btnBerat;
-    @FXML private Button btnNyeri, btnSakitKepala, btnKembung, btnMual, btnPayudara, btnKram, btnLemas;
+@FXML
+private GridPane calendarGrid;
 
-    @Override
-    public void initialize(URL url, ResourceBundle rb) {
-        // Inisialisasi jika diperlukan
-    }   
+@FXML
+private Label monthLabel;
 
-    // --- LOGIKA TOMBOL ALIRAN (Pilih Satu) ---
+    private YearMonth currentMonth = YearMonth.now();
+
     @FXML
-    private void pilihAliran(ActionEvent event) {
-        Button[] semua = {btnTidakAda, btnRingan, btnSedang, btnBerat};
-        // Reset semua ke warna default
-        for (Button b : semua) {
-            b.setStyle("-fx-background-radius:14; -fx-background-color:#F2EEEE; -fx-text-fill:black;");
+    public void initialize() {
+        generateCalendar(currentMonth);
+    }
+
+    @FXML
+    private void prevMonth() {
+        currentMonth = currentMonth.minusMonths(1);
+        generateCalendar(currentMonth);
+    }
+
+    @FXML
+    private void nextMonth() {
+        currentMonth = currentMonth.plusMonths(1);
+        generateCalendar(currentMonth);
+    }
+
+private void generateCalendar(YearMonth yearMonth) {
+
+    calendarGrid.getChildren().clear();
+
+    monthLabel.setText(
+        yearMonth.getMonth()
+                 .getDisplayName(TextStyle.FULL, new Locale("id", "ID"))
+        + " " + yearMonth.getYear()
+    );
+
+    LocalDate firstDay = yearMonth.atDay(1);
+    int firstColumn = firstDay.getDayOfWeek().getValue() - 1;
+    int daysInMonth = yearMonth.lengthOfMonth();
+    int day = 1;
+
+    LocalDate today = LocalDate.now(); // Pindahkan ke sini agar di-create sekali saja
+
+    for (int row = 0; row < 6; row++) {
+        for (int col = 0; col < 7; col++) {
+
+            if (row == 0 && col < firstColumn) {
+                continue;
+            }
+
+            if (day > daysInMonth) {
+                return;
+            }
+
+            // 1. Deklarasi tombol
+            Button btn = new Button(String.valueOf(day));
+            btn.setPrefSize(42, 42);
+
+            // Style default (warna putih)
+            btn.setStyle(
+                "-fx-background-color: white;" +
+                "-fx-background-radius: 12;" +
+                "-fx-border-radius: 12;" +
+                "-fx-border-color: #E0E0E0;" +
+                "-fx-font-size: 14;"
+            );
+
+            // 2. Pengecekan apakah "day" ini adalah hari ini (today)
+            // Dipindahkan ke dalam sini agar masih dalam scope variabel 'btn'
+            if (yearMonth.getYear() == today.getYear()
+                && yearMonth.getMonthValue() == today.getMonthValue()
+                && day == today.getDayOfMonth()) {
+
+                // Override style jadi warna merah untuk hari ini
+                btn.setStyle(
+                    "-fx-background-color: #9B1C1C;" +
+                    "-fx-text-fill: white;" +
+                    "-fx-background-radius: 18;" +
+                    "-fx-font-weight: bold;"
+                );
+            }
+
+            calendarGrid.add(btn, col, row);
+
+            // day++ dilakukan paling akhir di dalam loop kolom
+            day++;
         }
-        // Beri warna terpilih
-        Button terpilih = (Button) event.getSource();
-        terpilih.setStyle("-fx-background-radius:14; -fx-background-color:#9B1C1C; -fx-text-fill:white;");
     }
-
-    // --- LOGIKA TOMBOL GEJALA (Pilih Banyak) ---
-    @FXML
-    private void pilihGejala(ActionEvent event) {
-        Button b = (Button) event.getSource();
-        if (b.getStyle().contains("#9B1C1C")) {
-            b.setStyle("-fx-background-radius:18; -fx-background-color:#F2EEEE; -fx-text-fill:black;");
-        } else {
-            b.setStyle("-fx-background-radius:18; -fx-background-color:#9B1C1C; -fx-text-fill:white;");
-        }
-    }
-
-    @FXML
-    private void simpanData() {
-        System.out.println("Data berhasil disimpan ke sistem!");
-    }
-
-    // --- LOGIKA NAVIGASI ---
-    @FXML private void keBeranda(MouseEvent e) throws IOException { navigasi(e, "homepage"); }
-    @FXML private void keKalender(MouseEvent e) throws IOException { navigasi(e, "calender"); }
-    @FXML private void kePerawatan(MouseEvent e) throws IOException { navigasi(e, "perawatan"); }
-    @FXML private void keAkun(MouseEvent e) throws IOException { navigasi(e, "user"); }
-
-    private void navigasi(MouseEvent event, String fxml) throws IOException {
-        Node source = (Node) event.getSource();
-        FadeTransition ft = new FadeTransition(Duration.millis(200), source);
-        ft.setFromValue(1.0);
-        ft.setToValue(0.5);
-        ft.setAutoReverse(true);
-        ft.setCycleCount(2);
-        ft.play();
-        ft.setOnFinished(e -> {
-            try { App.setRoot(fxml); } catch (IOException ex) { ex.printStackTrace(); }
-        });
-    }
+}
 }

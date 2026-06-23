@@ -1,26 +1,34 @@
-/*
- * Click nbfs://nbhost/SystemFileSystem/Templates/Licenses/license-default.txt to change this license
- * Click nbfs://nbhost/SystemFileSystem/Templates/javafx/FXMLController.java to edit this template
- */
 package org.datanglagi.controller;
 
-import java.net.URL;
-import java.util.ResourceBundle;
-import javafx.fxml.Initializable;
+import javafx.fxml.FXML;
+import javafx.scene.control.ToggleButton;
 
-/**
- * FXML Controller class
- *
- * @author Microsoft
- */
-public class InputharianController implements Initializable {
+public class InputharianController {
 
-    /**
-     * Initializes the controller class.
-     */
-    @Override
-    public void initialize(URL url, ResourceBundle rb) {
-        // TODO
-    }    
-    
+    // Menyambungkan komponen FXML dengan variabel Java
+    @FXML
+    private ToggleButton toggleKb;
+
+    @FXML
+    public void initialize() {
+        // Kondisi awal di-set OFF saat halaman dibuka
+        toggleKb.setSelected(false);
+    }
+
+    @FXML
+    private void handleToggleKb() {
+        if (toggleKb.isSelected()) {
+            // Ketika tombol dalam posisi AKTIF (ON)
+            toggleKb.setText("ON");
+            // Ubah warnanya menjadi merah marun khas DatangLagi saat menyala
+            toggleKb.setStyle("-fx-background-radius: 20; -fx-background-color: #9B1C1C; -fx-text-fill: white; -fx-font-weight: bold; -fx-cursor: hand;");
+            System.out.println("Status KB: Diminum");
+        } else {
+            // Ketika tombol dimatikan kembali (OFF)
+            toggleKb.setText("OFF");
+            // Kembalikan warnanya menjadi abu-abu kusam
+            toggleKb.setStyle("-fx-background-radius: 20; -fx-background-color: #D3D3D3; -fx-text-fill: #555; -fx-font-weight: bold; -fx-cursor: hand;");
+            System.out.println("Status KB: Tidak Diminum");
+        }
+    }
 }
