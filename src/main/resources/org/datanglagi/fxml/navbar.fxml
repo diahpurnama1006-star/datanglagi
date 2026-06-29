@@ -19,7 +19,7 @@
          <children>
             <VBox alignment="CENTER" maxWidth="Infinity" onMouseClicked="#keBeranda" style="-fx-cursor: hand;" HBox.hgrow="ALWAYS">
                <children>
-                  <ImageView fx:id="imgberanda" fitHeight="28" fitWidth="28" onMouseClicked="#keHome">
+                  <ImageView fx:id="imgberanda" fitHeight="28" fitWidth="28">
                      <image>
                         <Image url="@../images/house-solid.png" />
                      </image>
@@ -30,7 +30,7 @@
             
             <VBox alignment="CENTER" maxWidth="Infinity" onMouseClicked="#keKalender" style="-fx-cursor: hand;" HBox.hgrow="ALWAYS">
                <children>
-                  <ImageView fx:id="imgkalender" fitHeight="28" fitWidth="28" onMouseClicked="#keKalender">
+                  <ImageView fx:id="imgkalender" fitHeight="28" fitWidth="28">
                      <image>
                         <Image url="@../images/calendar-days-regular.png" />
                      </image>
@@ -51,7 +51,7 @@
             
             <VBox alignment="CENTER" maxWidth="Infinity" onMouseClicked="#kePerawatan" style="-fx-cursor: hand;" HBox.hgrow="ALWAYS">
                <children>
-                  <ImageView fx:id="imgperawatan" fitHeight="28" fitWidth="28" onMouseClicked="#kePerawatan">
+                  <ImageView fx:id="imgperawatan" fitHeight="28" fitWidth="28">
                      <image>
                         <Image url="@../images/stethoscope-solid.png" />
                      </image>
@@ -62,7 +62,7 @@
             
             <VBox alignment="CENTER" maxWidth="Infinity" onMouseClicked="#keAkun" style="-fx-cursor: hand;" HBox.hgrow="ALWAYS">
                <children>
-                  <ImageView fx:id="imgakun" fitHeight="28" fitWidth="28" onMouseClicked="#keAkun">
+                  <ImageView fx:id="imgakun" fitHeight="28" fitWidth="28">
                      <image>
                         <Image url="@../images/circle-user-regular.png" />
                      </image>

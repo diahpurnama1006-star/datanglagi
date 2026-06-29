@@ -71,11 +71,16 @@ private void muatDataGrafik() {
             System.out.println("[ERROR] Gagal memuat data insight dari database.");
         }
     }
-
     @FXML
     private void keTipsNyeri(MouseEvent event) {
-        tampilkanPesan("Kamu sudah berada di halaman Tips Nyeri, wak!");
+        try {
+            App.setRoot("perawatan"); 
+        } catch (IOException e) {
+            e.printStackTrace();
+            tampilkanPesan("Gagal memuat halaman Tips Nyeri.");
+        }
     }
+
 
     @FXML
     private void keTipsDiet(MouseEvent event) {

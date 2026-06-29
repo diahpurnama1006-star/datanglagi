@@ -29,7 +29,7 @@ public class LoginController {
             return;
         }
 
-String query = "SELECT username, email, durasi_haid FROM users WHERE username = ? AND password = ?";
+String query = "SELECT username, email, durasi_haid FROM user WHERE username = ? AND password = ?";
 
 try (Connection conn = DatabaseHalper.getConnection();
      PreparedStatement stmt = conn.prepareStatement(query)) {

@@ -10,7 +10,7 @@ public class ViewLoader {
     public static void loadView(String fxmlFile, Stage stage) {
         try {
             // Memuat file FXML dari folder resources
-            FXMLLoader loader = new FXMLLoader(ViewLoader.class.getResource("/org/datanglagi/view/" + fxmlFile));
+            FXMLLoader loader = new FXMLLoader(ViewLoader.class.getResource("/org/datanglagi/fxml/" + fxmlFile));
             Parent root = loader.load();
             
             // Menampilkan scene baru ke stage

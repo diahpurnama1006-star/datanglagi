@@ -1,15 +1,10 @@
 <?xml version="1.0" encoding="UTF-8"?>
 
-<?import javafx.scene.chart.BarChart?>
-<?import javafx.scene.chart.CategoryAxis?>
-<?import javafx.scene.chart.NumberAxis?>
-<?import javafx.scene.control.Button?>
-<?import javafx.scene.control.Label?>
-<?import javafx.scene.image.Image?>
-<?import javafx.scene.image.ImageView?>
-<?import javafx.scene.layout.AnchorPane?>
-<?import javafx.scene.layout.Pane?>
-<?import javafx.scene.text.Font?>
+<?import javafx.scene.chart.*?> <?import javafx.collections.*?>
+<?import javafx.scene.control.*?>
+<?import javafx.scene.image.*?>
+<?import javafx.scene.layout.*?>
+<?import javafx.scene.text.*?>
 
 <AnchorPane prefHeight="640.0" prefWidth="360.0" style="-fx-background-color: #FFFDFB;" xmlns="http://javafx.com/javafx/26" xmlns:fx="http://javafx.com/fxml/1" fx:controller="org.datanglagi.controller.PerawatanController">
    <children>
@@ -91,13 +86,17 @@
             <Font name="Poppins SemiBold" size="18.0" />
          </font>
       </Label>
-      <BarChart layoutX="30.0" layoutY="408.0" onMouseClicked="#muatDataGrafik" prefHeight="131.0" prefWidth="306.0" style="-fx-horizontal-grid-lines-visible: false;">
-        <xAxis>
-          <CategoryAxis side="BOTTOM" />
-        </xAxis>
-        <yAxis>
-          <NumberAxis side="LEFT" />
-        </yAxis>
-      </BarChart>
+<BarChart fx:id="barChart" layoutX="30.0" layoutY="408.0" prefHeight="131.0" prefWidth="306.0">
+    <xAxis>
+        <CategoryAxis side="BOTTOM" />
+    </xAxis>
+    <yAxis>
+        <NumberAxis side="LEFT" />
+    </yAxis>
+    <data>
+        <FXCollections fx:factory="observableArrayList">
+            </FXCollections>
+    </data>
+</BarChart>
    </children>
 </AnchorPane>

@@ -46,14 +46,20 @@ public class NavbarController {
         loadPage("homepage");
     }
 
-    public static void loadPage(String fxml) {
-        try {
-            Parent root = FXMLLoader.load(NavbarController.class.getResource("/org/datanglagi/view/" + fxml + ".fxml"));
+public static void loadPage(String fxml) {
+    try {
+        String path = "/org/datanglagi/fxml/" + fxml + ".fxml";
+        Parent root = FXMLLoader.load(NavbarController.class.getResource(path));
+        
+        if (staticContentArea != null) {
             staticContentArea.getChildren().clear();
             staticContentArea.getChildren().add(root);
-        } catch (IOException e) {
-            e.printStackTrace();
-            System.out.println("Gagal memuat halaman: " + fxml);
+        } else {
+            System.out.println("ERROR: staticContentArea masih NULL!");
         }
+    } catch (IOException e) {
+        e.printStackTrace();
+        System.out.println("Gagal memuat halaman: " + fxml);
     }
+}
 }

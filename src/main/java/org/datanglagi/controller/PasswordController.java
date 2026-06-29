@@ -27,7 +27,7 @@ public class PasswordController {
             return;
         }
 
-        String query = "SELECT password FROM users WHERE username = ? AND email = ?";
+        String query = "SELECT password FROM user WHERE username = ? AND email = ?";
 
         try (Connection conn = DatabaseHalper.getConnection();
              PreparedStatement stmt = conn.prepareStatement(query)) {

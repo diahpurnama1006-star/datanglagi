@@ -43,7 +43,7 @@
                      <Label style="-fx-font-weight: bold;" text="Perubahan mood hari ini" />
             <HBox alignment="CENTER" spacing="20">
                 <VBox alignment="CENTER" spacing="5">
-               <ImageView fx:id="imgMood" fitHeight="35" fitWidth="35" onMouseClicked="#handleMoodClick">
+               <ImageView fx:id="imgMood" fitHeight="35" fitWidth="35">
                   <image>
                      <Image url="@../images/face-angry-regular.png" />
                   </image>
@@ -51,7 +51,7 @@
                <Label fx:id="lblMarah" text="marah" />
             </VBox>
                 <VBox alignment="CENTER" spacing="5">
-               <ImageView fx:id="imgMood" fitHeight="35" fitWidth="35" onMouseClicked="#handleMoodClick">
+               <ImageView fitHeight="35" fitWidth="35">
                   <image>
                      <Image url="@../images/face-frown-regular.png" />
                   </image>
@@ -59,7 +59,7 @@
                <Label fx:id="lblSedih" text="sedih" />
             </VBox>
                 <VBox alignment="CENTER" spacing="5">
-               <ImageView fx:id="imgMood" fitHeight="35" fitWidth="35" onMouseClicked="#handleMoodClick">
+               <ImageView fitHeight="35" fitWidth="35">
                   <image>
                      <Image url="@../images/face-meh-regular.png" />
                   </image>
@@ -67,7 +67,7 @@
                <Label fx:id="lblBiasa" text="biasa" />
             </VBox>
                 <VBox alignment="CENTER" spacing="5">
-               <ImageView fx:id="imgMood" fitHeight="35" fitWidth="35" onMouseClicked="#handleMoodClick">
+               <ImageView fitHeight="35" fitWidth="35">
                   <image>
                      <Image url="@../images/face-grin-beam-regular.png" />
                   </image>
