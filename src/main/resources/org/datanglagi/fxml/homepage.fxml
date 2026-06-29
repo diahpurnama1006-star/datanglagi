@@ -9,7 +9,7 @@
 <?import javafx.scene.layout.VBox?>
 <?import javafx.scene.text.Font?>
 
-<BorderPane prefHeight="640.0" prefWidth="360.0" style="-fx-background-color: linear-gradient(to right, #5A0F14, #7A1A1A);" xmlns="http://javafx.com/javafx/26" xmlns:fx="http://javafx.com/fxml/1" fx:controller="org.datanglagi.controller.HomepageController">
+<BorderPane prefHeight="640.0" prefWidth="360.0" style="-fx-background-color: linear-gradient(to right, #5A0F14, #7A1A1A);" xmlns="http://javafx.com/javafx/25.0.1" xmlns:fx="http://javafx.com/fxml/1" fx:controller="org.datanglagi.controller.HomepageController">
     
     <top>
         <HBox alignment="CENTER_LEFT" prefHeight="93.0" prefWidth="360.0" spacing="15.0" style="-fx-padding: 40 20 20 20; -fx-background-color: #6E1418;">
@@ -36,7 +36,7 @@
                 <VBox alignment="CENTER_LEFT">
                     <Label style="-fx-text-fill: #555;" text="Prediksi haid berikutnya" />
                     <Label fx:id="lblHariKe" style="-fx-font-weight: bold; -fx-font-size: 20px;" text="Hari ke-" />
-                    <Label fx:id="lblTanggalHiadNext" style="-fx-font-weight: bold;" text="Tanggal Haid" />
+                    <Label fx:id="lblTanggalHaidNext" style="-fx-font-weight: bold;" text="Tanggal Haid" />
                 </VBox>
             </HBox>
 
@@ -86,7 +86,7 @@
                 <HBox>
                <Label text="Durasi Haid" />
                <Region HBox.hgrow="ALWAYS" />
-               <Label fx:id="lblDurasiHiadVal" style="-fx-font-weight: bold;" text="Durasi" />
+               <Label fx:id="lblDurasiHaidVal" style="-fx-font-weight: bold;" text="Durasi" />
             </HBox>
                 <HBox>
                <Label text="Hari Ovulasi" />
@@ -96,7 +96,7 @@
                 <HBox>
                <Label text="Siklus Dicatat" />
                <Region HBox.hgrow="ALWAYS" />
-               <Label fx:id="lblSiklusDicatatatVal" style="-fx-font-weight: bold;" text="Siklus" />
+               <Label fx:id="lblSiklusDicatatVal" style="-fx-font-weight: bold;" text="Siklus" />
             </HBox>
             </VBox>
         </VBox>
