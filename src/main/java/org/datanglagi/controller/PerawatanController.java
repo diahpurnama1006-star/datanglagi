@@ -17,14 +17,15 @@ import java.sql.SQLException;
 
 public class PerawatanController {
 
-    @FXML private BarChart<String, Number> chartInsight;
+    @FXML
+    private BarChart<String, Number> chartInsight;
 
     @FXML
     public void initialize() {
         muatDataGrafik();
     }
 
-private void muatDataGrafik() {
+    private void muatDataGrafik() {
         String usernameAktif = UserSession.getInstance().getUsername();
 
         String query = "SELECT bulan, panjang_siklus FROM siklus_haid WHERE username = ? ORDER BY id_siklus ASC LIMIT 3";
@@ -33,17 +34,17 @@ private void muatDataGrafik() {
         dataSeries.setName("Panjang Siklus (Hari)");
 
         try (Connection conn = DatabaseHalper.getConnection();
-             PreparedStatement stmt = conn.prepareStatement(query)) {
-            
+                PreparedStatement stmt = conn.prepareStatement(query)) {
+
             stmt.setString(1, usernameAktif);
-            
+
             try (ResultSet rs = stmt.executeQuery()) {
                 int jumlahData = 0;
-                
+
                 while (rs.next()) {
-                    String bulan = rs.getString("bulan"); 
-                    int panjangSiklus = rs.getInt("panjang_siklus"); 
-                    
+                    String bulan = rs.getString("bulan");
+                    int panjangSiklus = rs.getInt("panjang_siklus");
+
                     dataSeries.getData().add(new XYChart.Data<>(bulan, panjangSiklus));
                     jumlahData++;
                 }
@@ -71,22 +72,22 @@ private void muatDataGrafik() {
             System.out.println("[ERROR] Gagal memuat data insight dari database.");
         }
     }
+
     @FXML
     private void keTipsNyeri(MouseEvent event) {
         try {
-            App.setRoot("perawatan"); 
-        } catch (IOException e) {
+            NavbarController.loadPage("perawatan");
+        } catch (Exception e) {
             e.printStackTrace();
             tampilkanPesan("Gagal memuat halaman Tips Nyeri.");
         }
     }
 
-
     @FXML
     private void keTipsDiet(MouseEvent event) {
         try {
-            App.setRoot("diet"); 
-        } catch (IOException e) {
+            NavbarController.loadPage("diet");
+        } catch (Exception e) {
             e.printStackTrace();
             tampilkanPesan("Gagal memuat halaman Tips Diet.");
         }
@@ -95,8 +96,8 @@ private void muatDataGrafik() {
     @FXML
     private void keTipsOlahraga(MouseEvent event) {
         try {
-            App.setRoot("olga"); 
-        } catch (IOException e) {
+            NavbarController.loadPage("olga");
+        } catch (Exception e) {
             e.printStackTrace();
             tampilkanPesan("Gagal memuat halaman Tips Olahraga.");
         }

@@ -14,21 +14,29 @@ import javafx.fxml.FXML;
 import javafx.scene.control.Alert;
 import javafx.scene.control.Button;
 import javafx.scene.control.Label;
+import javafx.scene.control.ToggleButton;
 import javafx.scene.layout.GridPane;
 import org.datanglagi.DatabaseHalper;
 import org.datanglagi.UserSession;
 
 public class CalenderController {
+    @FXML
+    private ToggleButton btnmulai;
 
-    @FXML private GridPane calendarGrid;
-    @FXML private Label monthLabel;
+    @FXML
+    private ToggleButton btnakhir;
+
+    @FXML
+    private GridPane calendarGrid;
+    @FXML
+    private Label monthLabel;
 
     private YearMonth currentMonth = YearMonth.now();
 
     // Data Siklus User yang diambil dari database
     private LocalDate hphtUser = null;
-    private int panjangSiklusUser = 28; 
-    private int durasiHaidUser = 7;     
+    private int panjangSiklusUser = 28;
+    private int durasiHaidUser = 7;
 
     @FXML
     public void initialize() {
@@ -44,8 +52,8 @@ public class CalenderController {
         String query = "SELECT tanggal_mulai, panjang_siklus FROM siklus_haid WHERE username = ? ORDER BY id_siklus DESC LIMIT 1";
 
         try (Connection conn = DatabaseHalper.getConnection();
-             PreparedStatement stmt = conn.prepareStatement(query)) {
-            
+                PreparedStatement stmt = conn.prepareStatement(query)) {
+
             stmt.setString(1, usernameAktif);
             try (ResultSet rs = stmt.executeQuery()) {
                 if (rs.next()) {
@@ -53,7 +61,8 @@ public class CalenderController {
                         hphtUser = rs.getDate("tanggal_mulai").toLocalDate();
                     }
                     int siklusDb = rs.getInt("panjang_siklus");
-                    if (siklusDb > 0) panjangSiklusUser = siklusDb;
+                    if (siklusDb > 0)
+                        panjangSiklusUser = siklusDb;
                 }
             }
         } catch (SQLException e) {
@@ -77,16 +86,15 @@ public class CalenderController {
         calendarGrid.getChildren().clear();
 
         monthLabel.setText(
-            yearMonth.getMonth().getDisplayName(TextStyle.FULL, new Locale("id", "ID"))
-            + " " + yearMonth.getYear()
-        );
+                yearMonth.getMonth().getDisplayName(TextStyle.FULL, new Locale("id", "ID"))
+                        + " " + yearMonth.getYear());
 
         LocalDate firstDay = yearMonth.atDay(1);
-        int firstColumn = firstDay.getDayOfWeek().getValue() - 1; 
+        int firstColumn = firstDay.getDayOfWeek().getValue() - 1;
         int daysInMonth = yearMonth.lengthOfMonth();
         int day = 1;
 
-        LocalDate today = LocalDate.now(); 
+        LocalDate today = LocalDate.now();
 
         for (int row = 0; row < 6; row++) {
             for (int col = 0; col < 7; col++) {
@@ -111,8 +119,8 @@ public class CalenderController {
 
                 // Aksi saat tanggal kalender diklik oleh user
                 btnHari.setOnAction(e -> {
-                    tampilkanPesan("Informasi Siklus Tanggal " + tanggalKalender, 
-                                   "Hari ini kamu diperkirakan berada dalam:\n★ " + faseHariIni + " ★");
+                    tampilkanPesan("Informasi Siklus Tanggal " + tanggalKalender,
+                            "Hari ini kamu diperkirakan berada dalam:\n★ " + faseHariIni + " ★");
                 });
 
                 calendarGrid.add(btnHari, col, row);
@@ -130,13 +138,15 @@ public class CalenderController {
         // Hitung selisih hari dari HPHT terakhir ke tanggal kalender yang dituju
         long selisihHari = ChronoUnit.DAYS.between(hphtUser, tanggal);
 
-        // Menormalkan selisih hari jika tanggal kalender berada di siklus-siklus bulan berikutnya
+        // Menormalkan selisih hari jika tanggal kalender berada di siklus-siklus bulan
+        // berikutnya
         if (selisihHari >= 0) {
             selisihHari = selisihHari % panjangSiklusUser;
         } else {
             // Mengatasi perhitungan untuk bulan mundur sebelum HPHT
             selisihHari = panjangSiklusUser + (selisihHari % panjangSiklusUser);
-            if (selisihHari == panjangSiklusUser) selisihHari = 0;
+            if (selisihHari == panjangSiklusUser)
+                selisihHari = 0;
         }
 
         // Posisi Hari keberapa dalam siklus (dimulai dari Hari ke-1)
@@ -146,9 +156,9 @@ public class CalenderController {
         if (hariSiklus >= 1 && hariSiklus <= durasiHaidUser) {
             return "Fase Menstruasi";
         }
-        
+
         // 2. Logika Fase Ovulasi / Masa Subur (Pertengahan Siklus, Rentang 5 hari)
-        int hariOvulasiHPL = panjangSiklusUser - 14; 
+        int hariOvulasiHPL = panjangSiklusUser - 14;
         if (hariSiklus >= (hariOvulasiHPL - 2) && hariSiklus <= (hariOvulasiHPL + 2)) {
             return "Fase Ovulasi (Masa Subur)";
         }
@@ -164,9 +174,10 @@ public class CalenderController {
 
     private void terapkanGayaWarna(Button btn, String fase, boolean apakahHariIni) {
         String styleBase = "-fx-background-radius: 12; -fx-border-radius: 12; -fx-font-size: 13;";
-        
+
         if (apakahHariIni) {
-            btn.setStyle(styleBase + "-fx-background-color: #E2D3D5; -fx-text-fill: #6E1418; -fx-font-weight: bold; -fx-border-color: #6E1418; -fx-border-width: 2;");
+            btn.setStyle(styleBase
+                    + "-fx-background-color: #E2D3D5; -fx-text-fill: #6E1418; -fx-font-weight: bold; -fx-border-color: #6E1418; -fx-border-width: 2;");
             return;
         }
 
@@ -174,13 +185,15 @@ public class CalenderController {
             case "Fase Menstruasi":
                 btn.setStyle(styleBase + "-fx-background-color: #6E1418; -fx-text-fill: white;");
                 break;
-                
+
             case "Fase Ovulasi (Masa Subur)":
-                btn.setStyle(styleBase + "-fx-background-color: #FFF3C4; -fx-text-fill: #A07200; -fx-border-color: #FFE082;");
+                btn.setStyle(styleBase
+                        + "-fx-background-color: #FFF3C4; -fx-text-fill: #A07200; -fx-border-color: #FFE082;");
                 break;
-                
+
             default:
-                btn.setStyle(styleBase + "-fx-background-color: white; -fx-text-fill: black; -fx-border-color: #E0E0E0;");
+                btn.setStyle(
+                        styleBase + "-fx-background-color: white; -fx-text-fill: black; -fx-border-color: #E0E0E0;");
                 break;
         }
     }
