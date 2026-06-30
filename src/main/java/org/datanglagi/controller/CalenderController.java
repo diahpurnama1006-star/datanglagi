@@ -37,6 +37,8 @@ public class CalenderController {
     private LocalDate hphtUser = null;
     private int panjangSiklusUser = 28;
     private int durasiHaidUser = 7;
+    private LocalDate tempMulai = null;
+    private LocalDate tempAkhir = null;
 
     @FXML
     public void initialize() {
@@ -47,7 +49,7 @@ public class CalenderController {
     // Ambil data siklus haid terakhir dari database berdasarkan username aktif
     private void ambilDataSiklusDatabase() {
         String usernameAktif = UserSession.getInstance().getUsername();
-        durasiHaidUser = UserSession.getInstance().getDurasiStr();
+        durasiHaidUser = UserSession.getInstance().getDurasiHaid();
 
         String query = "SELECT tanggal_mulai, panjang_siklus FROM siklus_haid WHERE username = ? ORDER BY id_siklus DESC LIMIT 1";
 
@@ -118,10 +120,29 @@ public class CalenderController {
                 terapkanGayaWarna(btnHari, faseHariIni, tanggalKalender.equals(today));
 
                 // Aksi saat tanggal kalender diklik oleh user
-                btnHari.setOnAction(e -> {
-                    tampilkanPesan("Informasi Siklus Tanggal " + tanggalKalender,
-                            "Hari ini kamu diperkirakan berada dalam:\n★ " + faseHariIni + " ★");
-                });
+    btnHari.setOnAction(e -> {
+    // CEK: Apakah user sedang dalam mode pilih tanggal?
+    if (btnmulai.isSelected()) {
+        tempMulai = tanggalKalender;
+        tampilkanPesan("Berhasil", "Tanggal Mulai diset ke: " + tempMulai);
+        btnmulai.setSelected(false);
+    } else if (btnakhir.isSelected()) {
+        tempAkhir = tanggalKalender;
+        tampilkanPesan("Berhasil", "Tanggal Akhir diset ke: " + tempAkhir);
+        btnakhir.setSelected(false);
+        
+        // Simpan jika kedua tanggal sudah dipilih
+        if (tempMulai != null && tempAkhir != null) {
+            simpanSiklusHaid(tempMulai, tempAkhir);
+            tempMulai = null; 
+            tempAkhir = null;
+        }
+    } else {
+        // JIKA TIDAK SEDANG MEMILIH (Mode Normal), baru munculkan info fase
+        tampilkanPesan("Informasi Siklus Tanggal " + tanggalKalender,
+                       "Hari ini kamu diperkirakan berada dalam:\n★ " + faseHariIni + " ★");
+    }
+});
 
                 calendarGrid.add(btnHari, col, row);
                 day++;
@@ -197,6 +218,46 @@ public class CalenderController {
                 break;
         }
     }
+    
+    private void simpanSiklusHaid(LocalDate mulai, LocalDate akhir) {
+    String username = UserSession.getInstance().getUsername();
+    // Hitung panjang siklus sederhana (selisih hari)
+    long durasi = ChronoUnit.DAYS.between(mulai, akhir) + 1; 
+    long panjangSiklus = 28; // Default, bisa disesuaikan nanti
+
+    String sql = "INSERT INTO siklus_haid (username, tanggal_mulai, tanggal_akhir, panjang_siklus) VALUES (?, ?, ?, ?)";
+
+    try (Connection conn = DatabaseHalper.getConnection();
+         PreparedStatement stmt = conn.prepareStatement(sql)) {
+        
+        stmt.setString(1, username);
+        stmt.setDate(2, java.sql.Date.valueOf(mulai));
+        stmt.setDate(3, java.sql.Date.valueOf(akhir));
+        stmt.setLong(4, panjangSiklus);
+        stmt.executeUpdate();
+        
+        // Refresh data setelah simpan
+        ambilDataSiklusDatabase();
+        generateCalendar(currentMonth);
+        
+    } catch (SQLException e) {
+        e.printStackTrace();
+    }
+}
+@FXML
+private void handleToggleMulai() {
+    if (btnmulai.isSelected()) {
+        btnakhir.setSelected(false); // Pastikan tombol akhir mati saat mulai aktif
+        tampilkanPesan("Mode Seleksi", "Silakan klik tanggal untuk TANGGAL MULAI");
+    }
+}
+@FXML
+private void handleToggleAkhir() {
+    if (btnakhir.isSelected()) {
+        btnmulai.setSelected(false); // Pastikan tombol mulai mati saat akhir aktif
+        tampilkanPesan("Mode Seleksi", "Silakan klik tanggal untuk TANGGAL AKHIR");
+    }
+}
 
     private void tampilkanPesan(String judul, String isi) {
         Alert a = new Alert(Alert.AlertType.INFORMATION);

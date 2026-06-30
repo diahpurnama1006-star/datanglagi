@@ -10,46 +10,41 @@ import java.io.IOException;
 
 public class UserController {
 
-    // Menghubungkan ke komponen label teks "Selamat Datang Username" di FXML
     @FXML private Label lblUsername; 
 
     @FXML
     public void initialize() {
-        // 1. Mengambil data username yang tersimpan di memori UserSession saat login/signup
-        String namaAktif = UserSession.getInstance().getUsername();
+        // Menggunakan instance dari session untuk mengambil data
+        UserSession session = UserSession.getInstance();
+        String namaAktif = session.getUsername();
         
         if (lblUsername != null) {
             if (namaAktif != null && !namaAktif.isEmpty()) {
-                // 2. Mengubah teks secara dinamis sesuai nama di memori
-                lblUsername.setText("Selamat Datang " + namaAktif);
+                lblUsername.setText("Selamat Datang, " + namaAktif + "!");
             } else {
-                // Cadangan aman jika memori kosong
-                lblUsername.setText("Selamat Datang Pengguna");
+                lblUsername.setText("Selamat Datang, Teman!");
             }
-        } else {
-            System.out.println("[WARNING] Komponen labelUsername masih bernilai null! Periksa fx:id di Scene Builder.");
         }
     }
+
     @FXML
-private void handleTentang(MouseEvent event) {
-    tampilkanPesan("DatangLagi adalah aplikasi pelacak siklus menstruasi dan kesehatan wanita modern.");
-}
+    private void handleTentang(MouseEvent event) {
+        tampilkanPesan("DatangLagi adalah aplikasi pelacak siklus menstruasi dan kesehatan wanita modern.");
+    }
 
     @FXML
     private void handleLogout(MouseEvent event) {
-        // 1. Menghapus data login yang tersimpan di memori session (di-set kembali ke null/0)
+        // PENTING: Pastikan method clearSession() ada di UserSession.java
         UserSession.getInstance().clearSession();
         
         try {
-            // 2. Merombak panggung utama untuk kembali ke halaman login awal
             App.setRoot("login");
         } catch (IOException e) {
             e.printStackTrace();
-            tampilkanPesan("Gagal kembali ke halaman login, wak!");
+            tampilkanPesan("Gagal keluar, silakan coba lagi.");
         }
     }
 
-    // Fungsi pembantu untuk memunculkan notifikasi pop-up dialog
     private void tampilkanPesan(String pesan) {
         Alert a = new Alert(Alert.AlertType.INFORMATION);
         a.setTitle("Informasi");

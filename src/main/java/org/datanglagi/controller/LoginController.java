@@ -18,69 +18,65 @@ public class LoginController {
     @FXML private TextField txtUsername;
     @FXML private PasswordField txtPassword;
 
+@FXML
+public void handleLupaPassword() {
+    try {
+        // Ganti "password" dengan nama file fxml halaman lupa password kamu
+        // Contoh: jika filenya adalah "lupapassword.fxml", maka gunakan "lupapassword"
+        App.setRoot("password"); 
+    } catch (IOException e) {
+        e.printStackTrace();
+        tampilkanPesan("Gagal membuka halaman lupa password, wak!");
+    }
+}
+
     @FXML
     public void handleLogin() {
         String username = txtUsername.getText().trim();
         String password = txtPassword.getText().trim();
 
-        // 1. Validasi Input Kosong
         if (username.isEmpty() || password.isEmpty()) {
             tampilkanPesan("Username dan Password tidak boleh kosong, wak!");
             return;
         }
 
-String query = "SELECT username, email, durasi_haid FROM user WHERE username = ? AND password = ?";
+        // Query untuk memverifikasi user dan menarik data siklus terbaru
+        String query = "SELECT u.username, u.email, s.durasi_haid, s.panjang_siklus " +
+                       "FROM user u " +
+                       "LEFT JOIN siklus_haid s ON u.username = s.username " +
+                       "WHERE u.username = ? AND u.password = ? " +
+                       "ORDER BY s.id_siklus DESC LIMIT 1";
 
-try (Connection conn = DatabaseHalper.getConnection();
-     PreparedStatement stmt = conn.prepareStatement(query)) {
-    
-    stmt.setString(1, username);
-    stmt.setString(2, password);
-    
-    try (ResultSet rs = stmt.executeQuery()) {
-        if (rs.next()) {
+        try (Connection conn = DatabaseHalper.getConnection();
+             PreparedStatement stmt = conn.prepareStatement(query)) {
             
-            String usernameLogin = rs.getString("username");
-            String emailLogin = rs.getString("email");
-            int durasiStr = rs.getInt("durasi_haid"); 
+            stmt.setString(1, username);
+            stmt.setString(2, password);
+            
+            try (ResultSet rs = stmt.executeQuery()) {
+                if (rs.next()) {
+                    // Berhasil login, simpan ke sesi
+                    String user = rs.getString("username");
+                    String email = rs.getString("email");
+                    int durasi = rs.getInt("durasi_haid");
+                    int panjang = rs.getInt("panjang_siklus");
 
-            UserSession.getInstance().startSession(usernameLogin, emailLogin, durasiStr);
-
-            try {
-                App.setRoot("navbar");
-            } catch (IOException e) {
-                e.printStackTrace();
-                tampilkanPesan("Gagal memuat halaman aplikasi.");
+                    UserSession.getInstance().startSession(user, email, durasi, panjang);
+                    
+                    App.setRoot("navbar"); // Pindah ke menu utama
+                } else {
+                    tampilkanPesan("Username atau Password salah, wak!");
+                }
             }
-        } else {
-            tampilkanPesan("Username atau Password salah, wak! Silakan cek kembali.");
-        }
-    }
-} catch (SQLException e) {
+        } catch (SQLException | IOException e) {
             e.printStackTrace();
-            tampilkanPesan("Terjadi kesalahan database: " + e.getMessage());
+            tampilkanPesan("Terjadi kesalahan: " + e.getMessage());
         }
     }
 
     @FXML
-    public void handleBukaSignup() {
-        try {
-            App.setRoot("signup");
-        } catch (IOException e) {
-            e.printStackTrace();
-            tampilkanPesan("Gagal membuka halaman daftar.");
-        }
-    }
-
-    @FXML
-    public void handleLupaPassword() {
-        try {
-            // Mengalihkan panggung besar ke file fxml lupa password kamu
-            App.setRoot("password"); 
-        } catch (IOException e) {
-            e.printStackTrace();
-            tampilkanPesan("Gagal membuka halaman lupa password, wak!");
-        }
+    public void handleBukaSignup() throws IOException {
+        App.setRoot("signup");
     }
 
     private void tampilkanPesan(String pesan) {

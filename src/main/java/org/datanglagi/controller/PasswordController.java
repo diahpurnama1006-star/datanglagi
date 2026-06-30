@@ -3,10 +3,10 @@ package org.datanglagi.controller;
 import javafx.fxml.FXML;
 import javafx.scene.control.Alert;
 import javafx.scene.control.TextField;
-import javafx.stage.Stage;
+import javafx.scene.input.MouseEvent;
+import org.datanglagi.App;
 import org.datanglagi.DatabaseHalper;
-import org.datanglagi.ViewLoader; // Asumsi kamu punya class untuk ganti scene
-
+import java.io.IOException;
 import java.sql.Connection;
 import java.sql.PreparedStatement;
 import java.sql.ResultSet;
@@ -17,8 +17,9 @@ public class PasswordController {
     @FXML private TextField txtUsername;
     @FXML private TextField txtEmail;
 
+    // Perhatikan: Menambahkan (MouseEvent event) agar sinkron dengan onMouseClicked
     @FXML
-    private void handleDapatkan() {
+    private void handleDapatkan(MouseEvent event) {
         String username = txtUsername.getText().trim();
         String email = txtEmail.getText().trim();
 
@@ -38,25 +39,23 @@ public class PasswordController {
 
             if (rs.next()) {
                 String passwordDitemukan = rs.getString("password");
-                
-                // Munculkan dialog informasi akun
-                Alert alert = new Alert(Alert.AlertType.INFORMATION);
-                alert.setTitle("Informasi Akun");
-                alert.setHeaderText("Akun Ditemukan!");
-                alert.setContentText("Password akun kamu adalah: " + passwordDitemukan);
-                
-                // Setelah user klik "OK" pada dialog
-                alert.showAndWait();
-                
-                // Arahkan ke halaman Login
-                ViewLoader.loadView("login.fxml", (Stage) txtUsername.getScene().getWindow());
-                
+                tampilkanAlert(Alert.AlertType.INFORMATION, "Informasi Akun", "Password kamu adalah: " + passwordDitemukan);
+                App.setRoot("login");
             } else {
                 tampilkanAlert(Alert.AlertType.ERROR, "Gagal", "Username atau Email tidak ditemukan.");
             }
-        } catch (SQLException e) {
+        } catch (SQLException | IOException e) {
             e.printStackTrace();
-            tampilkanAlert(Alert.AlertType.ERROR, "Error", "Terjadi kesalahan koneksi database.");
+            tampilkanAlert(Alert.AlertType.ERROR, "Error", "Database error.");
+        }
+    }
+    
+    @FXML
+    private void handleKembali(MouseEvent event) {
+        try {
+            App.setRoot("login");
+        } catch (IOException e) {
+            e.printStackTrace();
         }
     }
 

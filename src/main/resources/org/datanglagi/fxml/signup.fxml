@@ -49,9 +49,9 @@
                                     <Insets top="30.0" />
                                  </padding>
                               </Label>
-                              <TextField fx:id="txtUsernameSignUp" layoutX="10.0" layoutY="96.0" promptText="masukkan username" />
+                              <TextField fx:id="txtUsername" layoutX="10.0" layoutY="96.0" promptText="masukkan username" />
                               <Label text="Email"><font><Font name="Poppins Medium" size="12.0" /></font><padding><Insets top="10.0" /></padding></Label>
-                              <TextField fx:id="txtEmailSignUp" promptText="masukan email" />
+                              <TextField fx:id="txtEmail" promptText="masukan email" />
                            </children>
                         </VBox>
                         <VBox spacing="5.0">
@@ -69,7 +69,16 @@
                         <VBox spacing="10.0">
                            <children>
                               <Label text="Durasi Haid"><font><Font name="Poppins Medium" size="12.0" /></font><padding><Insets top="10.0" /></padding></Label>
-                              <TextField fx:id="txtDurasiHaid" prefHeight="20.0" prefWidth="222.0" promptText="3-4 hari" />
+                              <TextField fx:id="txtDurasiHaid" prefHeight="20.0" prefWidth="222.0" promptText="7" />
+                              <Label layoutX="10.0" layoutY="10.0" text="Panjang Siklus">
+                                 <font>
+                                    <Font name="Poppins Medium" size="12.0" />
+                                 </font>
+                                 <padding>
+                                    <Insets top="10.0" />
+                                 </padding>
+                              </Label>
+                              <TextField fx:id="txtPanjangSiklus" layoutX="10.0" layoutY="48.0" prefHeight="20.0" prefWidth="222.0" promptText="28" />
                            </children>
                         </VBox>
                      </children>

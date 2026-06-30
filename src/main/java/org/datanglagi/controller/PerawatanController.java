@@ -28,7 +28,7 @@ public class PerawatanController {
     private void muatDataGrafik() {
         String usernameAktif = UserSession.getInstance().getUsername();
 
-        String query = "SELECT bulan, panjang_siklus FROM siklus_haid WHERE username = ? ORDER BY id_siklus ASC LIMIT 3";
+        String query = "SELECT tanggal_mulai, panjang_siklus FROM siklus_haid WHERE username = ? ORDER BY id_siklus ASC LIMIT 3";
 
         XYChart.Series<String, Number> dataSeries = new XYChart.Series<>();
         dataSeries.setName("Panjang Siklus (Hari)");
@@ -50,8 +50,8 @@ public class PerawatanController {
                 }
 
                 if (jumlahData == 0) {
-                    int durasiStr = UserSession.getInstance().getDurasiStr();
-                    dataSeries.getData().add(new XYChart.Data<>("Bulan Ini", durasiStr));
+                    int durasiHaid = UserSession.getInstance().getDurasiHaid();
+                    dataSeries.getData().add(new XYChart.Data<>("Bulan Ini", durasiHaid));
                 }
             }
 

@@ -119,16 +119,33 @@ public class HomepageController {
         }
     }
 
-    // 6. Perubahan Mood (Single Select Merah)
-    @FXML
-    private void klikMood(MouseEvent e) {
-        Label klik = (Label) e.getSource();
+ @FXML
+private void klikMood(MouseEvent e) {
+    // 1. Ambil target yang diklik (bisa VBox, bisa Label di dalamnya)
+    Object source = e.getSource();
+    Label klik = null;
+
+    // 2. Jika yang diklik VBox, cari Label di dalamnya
+    if (source instanceof javafx.scene.layout.VBox) {
+        javafx.scene.layout.VBox vbox = (javafx.scene.layout.VBox) source;
+        // Cari child yang merupakan Label
+        for (javafx.scene.Node node : vbox.getChildren()) {
+            if (node instanceof Label) {
+                klik = (Label) node;
+                break;
+            }
+        }
+    } else if (source instanceof Label) {
+        klik = (Label) source;
+    }
+
+    // 3. Jalankan logika perubahan warna jika Label ditemukan
+    if (klik != null) {
         Label[] moods = { lblMarah, lblSedih, lblBiasa, lblSenang };
         for (Label l : moods) {
-            // Jika label yang diklik sama dengan label dalam array, warnai merah, jika
-            // tidak kembalikan ke hitam
             l.setStyle(l == klik ? "-fx-text-fill: #6E1418; -fx-font-weight: bold;"
-                    : "-fx-text-fill: black; -fx-font-weight: normal;");
+                                 : "-fx-text-fill: black; -fx-font-weight: normal;");
         }
     }
 }
+    }
