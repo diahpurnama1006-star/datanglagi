@@ -49,9 +49,9 @@
                                     <Insets top="30.0" />
                                  </padding>
                               </Label>
-                              <TextField fx:id="txtUsername" layoutX="10.0" layoutY="96.0" promptText="masukkan username" />
+                              <TextField fx:id="txtUsernameSignUp" layoutX="10.0" layoutY="96.0" promptText="masukkan username" />
                               <Label text="Email"><font><Font name="Poppins Medium" size="12.0" /></font><padding><Insets top="10.0" /></padding></Label>
-                              <TextField fx:id="txtEmail" promptText="masukan email" />
+                              <TextField fx:id="txtEmailSignUp" promptText="masukan email" />
                            </children>
                         </VBox>
                         <VBox spacing="5.0">

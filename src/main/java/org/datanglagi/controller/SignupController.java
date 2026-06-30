@@ -11,6 +11,8 @@ import java.sql.SQLException;
 import org.datanglagi.App;
 import org.datanglagi.DatabaseHalper;
 import org.datanglagi.UserSession;
+import javafx.scene.input.MouseEvent;
+
 
 public class SignupController {
 
@@ -55,7 +57,7 @@ public void handleDaftar() {
 
         conn.commit(); // Simpan kedua tabel
         tampilkanPesan("Pendaftaran berhasil!");
-        App.setRoot("login");
+        App.setRoot("navbar");
 
     } catch (Exception e) {
         e.printStackTrace();
