@@ -15,20 +15,22 @@ import org.datanglagi.DatabaseHalper;
 
 public class LoginController {
 
-    @FXML private TextField txtUsername;
-    @FXML private PasswordField txtPassword;
+    @FXML
+    private TextField txtUsername;
+    @FXML
+    private PasswordField txtPassword;
 
-@FXML
-public void handleLupaPassword() {
-    try {
-        // Ganti "password" dengan nama file fxml halaman lupa password kamu
-        // Contoh: jika filenya adalah "lupapassword.fxml", maka gunakan "lupapassword"
-        App.setRoot("password"); 
-    } catch (IOException e) {
-        e.printStackTrace();
-        tampilkanPesan("Gagal membuka halaman lupa password, wak!");
+    @FXML
+    public void handleLupaPassword() {
+        try {
+            // Ganti "password" dengan nama file fxml halaman lupa password kamu
+            // Contoh: jika filenya adalah "lupapassword.fxml", maka gunakan "lupapassword"
+            App.setRoot("password");
+        } catch (IOException e) {
+            e.printStackTrace();
+            tampilkanPesan("Gagal membuka halaman lupa password, wak!");
+        }
     }
-}
 
     @FXML
     public void handleLogin() {
@@ -42,17 +44,17 @@ public void handleLupaPassword() {
 
         // Query untuk memverifikasi user dan menarik data siklus terbaru
         String query = "SELECT u.username, u.email, s.durasi_haid, s.panjang_siklus " +
-                       "FROM user u " +
-                       "LEFT JOIN siklus_haid s ON u.username = s.username " +
-                       "WHERE u.username = ? AND u.password = ? " +
-                       "ORDER BY s.id_siklus DESC LIMIT 1";
+                "FROM user u " +
+                "LEFT JOIN siklus_haid s ON u.username = s.username " +
+                "WHERE u.username = ? AND u.password = ? " +
+                "ORDER BY s.id_siklus DESC LIMIT 1";
 
         try (Connection conn = DatabaseHalper.getConnection();
-             PreparedStatement stmt = conn.prepareStatement(query)) {
-            
+                PreparedStatement stmt = conn.prepareStatement(query)) {
+
             stmt.setString(1, username);
             stmt.setString(2, password);
-            
+
             try (ResultSet rs = stmt.executeQuery()) {
                 if (rs.next()) {
                     // Berhasil login, simpan ke sesi
@@ -62,7 +64,7 @@ public void handleLupaPassword() {
                     int panjang = rs.getInt("panjang_siklus");
 
                     UserSession.getInstance().startSession(user, email, durasi, panjang);
-                    
+
                     App.setRoot("navbar"); // Pindah ke menu utama
                 } else {
                     tampilkanPesan("Username atau Password salah, wak!");
